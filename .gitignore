@@ -3,3 +3,6 @@
 ################################################################################
 
 /packages
+/SoftwareDesign/bin
+/SoftwareDesign/obj/Debug
+/SoftwareDesign.Tests/obj/Debug
