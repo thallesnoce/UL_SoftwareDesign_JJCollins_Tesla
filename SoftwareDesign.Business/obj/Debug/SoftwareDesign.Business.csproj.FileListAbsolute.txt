@@ -1,0 +1,7 @@
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Business\bin\Debug\SoftwareDesign.Business.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Business\bin\Debug\SoftwareDesign.Business.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Business\obj\Debug\SoftwareDesign.Business.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Business\obj\Debug\SoftwareDesign.Business.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Business\bin\Debug\SoftwareDesign.Model.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Business\bin\Debug\SoftwareDesign.Model.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Business\obj\Debug\SoftwareDesign.Business.csprojResolveAssemblyReference.cache
