@@ -4,6 +4,8 @@ namespace SoftwareDesign.Model
 {
     public class Hotel
     {
+        //Monica, here will be all the entities (Model)
+
         public int AccommodationId {get;set;}
         public string Name { get; set; }
         public int Description { get; set; }

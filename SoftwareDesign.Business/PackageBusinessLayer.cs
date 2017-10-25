@@ -2,7 +2,7 @@
 
 namespace SoftwareDesign.Business
 {
-    public class ManagerPackage
+    public class PackageBusinessLayer
     {
 
         //All the logic will be here.
