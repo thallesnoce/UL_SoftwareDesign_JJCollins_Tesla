@@ -14,10 +14,12 @@ namespace SoftwareDesign.Repository
         // All flat files will be here.
         public List<Package> SearchPackage(int transportId, int hotelId, DateTime startDate, DateTime endDate)
         {
+            var transport = new Transport() { TransportId = 1, Name = "Airplane", Description = "Long Description", TransportPartnerId = 1 };
+
             var data = new List<Package>()
             {
-                new Package(){ PackageId = 1, Name = "3 Nights in Paris",  Description="Long Description", StartDate= DateTime.Now.Subtract(new TimeSpan(5,1,1,1)), EndDate= DateTime.Now.Add(new TimeSpan(5,1,1,1))},
-                new Package(){ PackageId = 2, Name = "5 Nights in Irend",  Description="Long Description", StartDate= DateTime.Now.Subtract(new TimeSpan(25,1,1,1)), EndDate= DateTime.Now.Add(new TimeSpan(30,1,1,1))}
+                new Package(){ PackageId = 1, Name = "3 Nights in Paris",  Description="Long Description", StartDate= DateTime.Now.Subtract(new TimeSpan(5,1,1,1)), EndDate= DateTime.Now.Add(new TimeSpan(5,1,1,1)),Transport=transport},
+                new Package(){ PackageId = 2, Name = "5 Nights in Irend",  Description="Long Description", StartDate= DateTime.Now.Subtract(new TimeSpan(25,1,1,1)), EndDate= DateTime.Now.Add(new TimeSpan(30,1,1,1)),Transport=transport}
                 //...
             };
 
