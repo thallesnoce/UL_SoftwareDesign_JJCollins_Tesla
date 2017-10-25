@@ -3,7 +3,12 @@
 ################################################################################
 
 /packages
-/SoftwareDesign/bin
-/SoftwareDesign/obj/Debug
-/SoftwareDesign.Tests/obj/Debug
+/SoftwareDesign.UI/bin
+/SoftwareDesign.UI/obj/Debug
+/SoftwareDesign.Business/bin
+/SoftwareDesign.Business/obj/Debug
+/SoftwareDesign.Model/bin
+/SoftwareDesign.Model/obj/Debug
+/SoftwareDesign.Repository/bin
+/SoftwareDesign.Repository/obj/Debug
 /.vs/SoftwareDesign/v15/Server/sqlite3

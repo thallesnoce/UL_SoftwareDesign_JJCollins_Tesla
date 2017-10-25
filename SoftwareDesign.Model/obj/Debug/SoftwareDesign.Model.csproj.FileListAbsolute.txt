@@ -1,5 +1,6 @@
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Model\bin\Debug\SoftwareDesign.Model.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Model\bin\Debug\SoftwareDesign.Model.pdb
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Model\obj\Debug\SoftwareDesign.Model.csprojResolveAssemblyReference.cache
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Model\obj\Debug\SoftwareDesign.Model.csproj.CoreCompileInputs.cache
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Model\obj\Debug\SoftwareDesign.Model.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Model\obj\Debug\SoftwareDesign.Model.pdb

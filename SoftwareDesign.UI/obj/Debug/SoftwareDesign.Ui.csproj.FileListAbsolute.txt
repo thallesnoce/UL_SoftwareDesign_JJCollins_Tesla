@@ -39,6 +39,7 @@ C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Microsoft.App
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Microsoft.Web.Infrastructure.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Newtonsoft.Json.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\SoftwareDesign.Business.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.Helpers.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.Mvc.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.Optimization.dll
@@ -47,6 +48,7 @@ C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.We
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.WebPages.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.WebPages.Razor.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\WebGrease.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\SoftwareDesign.Business.pdb
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.Helpers.xml
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\System.Web.Mvc.xml
@@ -63,7 +65,6 @@ C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Microsoft.AI.
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Microsoft.AI.WindowsServer.xml
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\Microsoft.AI.Web.xml
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\obj\Debug\SoftwareDesign.Ui.csprojResolveAssemblyReference.cache
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\obj\Debug\SoftwareDesign.Ui.csproj.CoreCompileInputs.cache
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\obj\Debug\SoftwareDesign.UI.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\obj\Debug\SoftwareDesign.UI.pdb
-C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\SoftwareDesign.Business.dll
-C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.UI\bin\SoftwareDesign.Business.pdb

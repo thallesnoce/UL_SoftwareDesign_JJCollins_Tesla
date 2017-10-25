@@ -1,7 +1,8 @@
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\bin\Debug\SoftwareDesign.Repository.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\bin\Debug\SoftwareDesign.Repository.pdb
-C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\obj\Debug\SoftwareDesign.Repository.csprojResolveAssemblyReference.cache
-C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\obj\Debug\SoftwareDesign.Repository.dll
-C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\obj\Debug\SoftwareDesign.Repository.pdb
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\bin\Debug\SoftwareDesign.Model.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\bin\Debug\SoftwareDesign.Model.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\obj\Debug\SoftwareDesign.Repository.csprojResolveAssemblyReference.cache
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\obj\Debug\SoftwareDesign.Repository.csproj.CoreCompileInputs.cache
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\obj\Debug\SoftwareDesign.Repository.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.Repository\obj\Debug\SoftwareDesign.Repository.pdb
