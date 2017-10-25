@@ -12,3 +12,7 @@
 /SoftwareDesign.Repository/bin
 /SoftwareDesign.Repository/obj/Debug
 /.vs/SoftwareDesign/v15/Server/sqlite3
+/SoftwareDesign.API/bin
+/SoftwareDesign.API/obj/Debug
+/SoftwareDesign.Business.Test/bin/Debug
+/SoftwareDesign.Business.Test/obj/Debug

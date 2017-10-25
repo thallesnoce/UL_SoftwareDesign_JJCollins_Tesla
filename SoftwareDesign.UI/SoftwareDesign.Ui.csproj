@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -142,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,6 +186,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Package\Index.cshtml" />
+    <Content Include="Views\Package\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -208,6 +212,10 @@
     <ProjectReference Include="..\SoftwareDesign.Business\SoftwareDesign.Business.csproj">
       <Project>{6122e149-2e59-41c5-bb9f-3f5782f384fb}</Project>
       <Name>SoftwareDesign.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftwareDesign.Model\SoftwareDesign.Model.csproj">
+      <Project>{074848da-27b4-4342-827a-ee56261873c4}</Project>
+      <Name>SoftwareDesign.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
