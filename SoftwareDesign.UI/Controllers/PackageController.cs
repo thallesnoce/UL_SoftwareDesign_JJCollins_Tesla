@@ -23,6 +23,22 @@ namespace SoftwareDesign.UI.Controllers
             var list = new PackageBusinessLayer().SearchPackage(transportId, hotelId, startDate, endDate);
 
             return View(list);
+
+            
+        }
+        public ActionResult ViewPackageDetail(int packageid)
+        {
+            //Monica, start here
+            var list = new PackageBusinessLayer().SearchPackage(transportId, hotelId, startDate, endDate);
+
+            return View(list);
+        }
+        public ActionResult ManagePackage(int Packageid)
+        {
+            //Monica, start here
+            var list = new PackageBusinessLayer().SearchPackage(transportId, hotelId, startDate, endDate);
+
+            return View(list);
         }
     }
 }

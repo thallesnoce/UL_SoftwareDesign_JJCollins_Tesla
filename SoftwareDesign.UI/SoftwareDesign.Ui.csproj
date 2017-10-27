@@ -188,6 +188,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Package\Index.cshtml" />
     <Content Include="Views\Package\Search.cshtml" />
+    <Content Include="Views\Package\ViewDetail.cshtml" />
+    <Content Include="Views\Package\ManagePackage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
