@@ -26,19 +26,25 @@ namespace SoftwareDesign.UI.Controllers
 
             
         }
-        public ActionResult ViewPackageDetail(int packageid)
+        public ActionResult ViewPackage()
         {
             //Monica, start here
-            var list = new PackageBusinessLayer().SearchPackage(transportId, hotelId, startDate, endDate);
+            var list = new PackageBusinessLayer().ViewPackage();
 
             return View(list);
         }
-        public ActionResult ManagePackage(int Packageid)
+       /* public ActionResult ManagePackage(int Packageid)
         {
             //Monica, start here
-            var list = new PackageBusinessLayer().SearchPackage(transportId, hotelId, startDate, endDate);
+            var list = new PackageBusinessLayer().SearchPackage();
 
             return View(list);
         }
+        public PackageBusinessLayer GetPackage(int packageid)
+        { 
+          //  var list = new PackageBusinessLayer()
+            return View(list);
+        }*/
+
     }
 }
