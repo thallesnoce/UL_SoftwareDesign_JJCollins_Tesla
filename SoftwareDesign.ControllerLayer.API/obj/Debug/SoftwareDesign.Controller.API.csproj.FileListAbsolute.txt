@@ -1,1 +1,0 @@
-C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\namespace SoftwareDesign.UI\obj\Debug\namespace SoftwareDesign.UI.csproj.CoreCompileInputs.cache
