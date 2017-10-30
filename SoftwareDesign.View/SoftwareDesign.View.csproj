@@ -209,10 +209,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SoftwareDesign.ControllerLayer.API\SoftwareDesign.ControllerLayer.API.csproj">
-      <Project>{5db4a2d0-6a92-4f30-af0d-8a91831de8ca}</Project>
-      <Name>SoftwareDesign.ControllerLayer.API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SoftwareDesign.ControllerLayer.Business\SoftwareDesign.ControllerLayer.Business.csproj">
       <Project>{6122e149-2e59-41c5-bb9f-3f5782f384fb}</Project>
       <Name>SoftwareDesign.ControllerLayer.Business</Name>
