@@ -156,6 +156,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\001.jpg" />
+    <Content Include="images\002.jpg" />
+    <Content Include="images\003.jpg" />
+    <Content Include="images\004.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -188,6 +192,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Package\Index.cshtml" />
     <Content Include="Views\Package\Search.cshtml" />
+    <Content Include="Views\Package\ViewDetail.cshtml" />
+    <Content Include="Views\Package\ManagePackage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

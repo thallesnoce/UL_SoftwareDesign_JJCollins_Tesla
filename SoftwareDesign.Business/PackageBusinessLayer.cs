@@ -24,5 +24,9 @@ namespace SoftwareDesign.Business
         {
             throw new NotImplementedException();
         }
+        public Package ViewPackage()
+        {
+            return new PackageRepository().ViewPackage();
+        }
     }
 }
