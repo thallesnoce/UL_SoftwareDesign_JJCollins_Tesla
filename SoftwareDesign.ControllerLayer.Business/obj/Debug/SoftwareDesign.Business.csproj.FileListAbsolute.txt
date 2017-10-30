@@ -1,0 +1,11 @@
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\bin\Debug\SoftwareDesign.ControllerLayer.Business.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\bin\Debug\SoftwareDesign.ControllerLayer.Business.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\bin\Debug\SoftwareDesign.Model.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\bin\Debug\SoftwareDesign.Repository.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\bin\Debug\SoftwareDesign.Model.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\bin\Debug\SoftwareDesign.Repository.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\bin\Debug\SoftwareDesign.Repository.dll.config
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\obj\Debug\SoftwareDesign.ControllerLayer.Business.csprojResolveAssemblyReference.cache
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\obj\Debug\SoftwareDesign.ControllerLayer.Business.csproj.CoreCompileInputs.cache
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\obj\Debug\SoftwareDesign.ControllerLayer.Business.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.Business\obj\Debug\SoftwareDesign.ControllerLayer.Business.pdb
