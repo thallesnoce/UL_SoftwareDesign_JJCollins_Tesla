@@ -1,4 +1,5 @@
 ﻿using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.Model.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,12 @@ namespace SoftwareDesign.View.Controllers
         // Search: Package
         public ActionResult Search(int transportId, int hotelId, DateTime startDate, DateTime endDate)
         {
+            //Put this in the Model Project later
+            var listTransport = new List<Transport>() {
+                new Transport() { TransportId = 1, Name = "Transport1" },
+                new Transport() { TransportId = 2, Name = "Transport2" }
+            };
+            ViewBag.TransportType = listTransport;
             var list = new PackageBusinessLayer().SearchPackage(transportId, hotelId, startDate, endDate);
 
             return View(list);

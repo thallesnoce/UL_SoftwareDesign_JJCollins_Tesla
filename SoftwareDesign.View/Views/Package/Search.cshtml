@@ -4,8 +4,24 @@
     ViewBag.Title = "Search";
 }
 
-<h2>Search</h2>
+<h4>Search Packages</h4>
 
+@using (Html.BeginForm("Search","Package"))
+{
+    <div>
+        <div>
+            @Html.DropDownList("TransportType")
+            <br />
+            @*@Html.DropDownList("DestinationType")*@
+            <br />
+            @*@Html.DropDownList("HotelType")*@
+        </div>
+        <br />
+        <div>
+            <div style="float:right; background-color:limegreen"><input id="Button1" type="button" value="Search" /></div>
+        </div>
+    </div>
+}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -47,9 +63,7 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PackageId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PackageId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PackageId })
+            @Html.ActionLink("Details", "Details", new { id=item.PackageId })        
         </td>
     </tr>
 }
