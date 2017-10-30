@@ -13,7 +13,23 @@
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
-        </EntityContainer>
+          <EntitySet Name="Packages" EntityType="DataModel.Package" />
+          <EntitySet Name="Users" EntityType="DataModel.User" />
+          </EntityContainer>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Client" BaseType="DataModel.User" />
+        <EntityType Name="Staff" BaseType="DataModel.User" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

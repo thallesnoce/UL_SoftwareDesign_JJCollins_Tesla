@@ -4,7 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c76db748a188454d9b3c59e50cb80817" Name="Diagram1" />
+      <Diagram DiagramId="c76db748a188454d9b3c59e50cb80817" Name="Diagram1" >
+        <EntityTypeShape EntityType="DataModel.Package" Width="1.5" PointX="1.625" PointY="1.5" />
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="5.625" PointY="1.625" />
+        <EntityTypeShape EntityType="DataModel.Client" Width="1.5" PointX="3.875" PointY="4" />
+        <InheritanceConnector EntityType="DataModel.Client" />
+        <EntityTypeShape EntityType="DataModel.Staff" Width="1.5" PointX="7.5" PointY="4.25" />
+        <InheritanceConnector EntityType="DataModel.Staff" ManuallyRouted="false" >
+        </InheritanceConnector>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
