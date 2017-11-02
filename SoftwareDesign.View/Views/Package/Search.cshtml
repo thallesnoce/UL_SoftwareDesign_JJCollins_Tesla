@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<SoftwareDesign.Model.DataModel.Package>
+@*
+    Thalles and Jessie Use Case Implementation
+*@
 
 @{
     ViewBag.Title = "Search";
@@ -6,24 +9,25 @@
 
 <h4>Search Packages</h4>
 
-@using (Html.BeginForm("Search","Package"))
+@using (Html.BeginForm("Search","Package", FormMethod.Get))
 {
     <div>
         <div>
-            @Html.DropDownList("TransportType")
+            @Html.DropDownList("TransportId", "-select transport-")
             <br />
-            @*@Html.DropDownList("DestinationType")*@
+            @Html.DropDownList("DestinationId", "-select destination-")
             <br />
-            @*@Html.DropDownList("HotelType")*@
+            @Html.DropDownList("HotelId", "-select hotel-")
         </div>
         <br />
         <div>
-            <div style="float:right; background-color:limegreen"><input id="Button1" type="button" value="Search" /></div>
+            <div style="float:right; background-color:limegreen">
+                <input id="btnSearch" type="submit" value="Search" />
+            </div>
         </div>
     </div>
 }
 <p>
-    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -45,27 +49,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.PackageId })        
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.ActionLink("View Package", "ViewPackage", new { packageId = item.PackageId })
+            </td>
+        </tr>
+    }
 
 </table>

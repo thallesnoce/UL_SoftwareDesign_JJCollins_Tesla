@@ -7,9 +7,7 @@ namespace SoftwareDesign.ControllerLayer.Business
 {
     public class PackageBusinessLayer
     {
-        //All the logic will be here.
-        //Controller
-        public void BuyPackage(int transportPartnerId, Destination destination, Hotel hotel)
+        public void BuyPackage(int packageId, int clientId)
         {
             throw new NotImplementedException();
         }
@@ -24,9 +22,10 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
             throw new NotImplementedException();
         }
-        public Package ViewPackage()
+
+        public Package ViewPackage(int packageId)
         {
-            return new PackageRepository().GetPackage(1);
+            return new PackageRepository().GetPackage(packageId);
         }
     }
 }

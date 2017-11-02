@@ -189,12 +189,10 @@
     <Content Include="Views\Package\Index.cshtml" />
     <Content Include="Views\Package\ManagePackage.cshtml" />
     <Content Include="Views\Package\Search.cshtml" />
-    <Content Include="Views\Package\ViewDetail.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Package\ViewPackage.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

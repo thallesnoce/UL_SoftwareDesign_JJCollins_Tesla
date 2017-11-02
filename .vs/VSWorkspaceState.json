@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SoftwareDesign.ControllerLayer.Business",
+    "\\SoftwareDesign.View",
+    "\\SoftwareDesign.View\\Views",
+    "\\SoftwareDesign.View\\Views\\Package"
   ],
-  "SelectedNode": "\\SoftwareDesign.sln",
+  "SelectedNode": "\\SoftwareDesign.ControllerLayer.Business\\PackageBusinessLayer.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TransportBusinessLayer.cs" />
+    <Compile Include="DestinationBusinessLayer.cs" />
     <Compile Include="HotelBusinessLayer.cs" />
-    <Compile Include="StaffBusinessLayer.cs" />
     <Compile Include="UserBusinessLayer.cs" />
     <Compile Include="PackageBusinessLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,5 +57,6 @@
       <Name>SoftwareDesign.Repository</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
