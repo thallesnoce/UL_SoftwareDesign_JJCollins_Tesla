@@ -48,13 +48,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SoftwareDesign.Model\SoftwareDesign.Model.csproj">
-      <Project>{074848da-27b4-4342-827a-ee56261873c4}</Project>
-      <Name>SoftwareDesign.Model</Name>
+    <ProjectReference Include="..\SoftwareDesign.DataAccessLayer\SoftwareDesign.DataAccessLayer.csproj">
+      <Project>{8d887d27-f20c-468f-b1d2-c0cb199d61cc}</Project>
+      <Name>SoftwareDesign.DataAccessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SoftwareDesign.Model\SoftwareDesign.Model.csproj">
+    <ProjectReference Include="..\SoftwareDesign.Model\SoftwareDesign.Entities.csproj">
+      <Project>{9F251EA9-A550-4362-9DA2-C58F1D8A6B4A}</Project>
+      <Name>SoftwareDesign.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoftwareDesign.Model\SoftwareDesign.Entities.csproj">
       <Project>{9f251ea9-a550-4362-9da2-c58f1d8a6b4a}</Project>
-      <Name>SoftwareDesign.Repository</Name>
+      <Name>SoftwareDesign.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

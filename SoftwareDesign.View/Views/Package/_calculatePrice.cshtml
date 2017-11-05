@@ -1,0 +1,36 @@
+﻿@model SoftwareDesign.Entities.PackageEntity
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Payment Info</h4>
+    </div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Price)
+            @Html.ValueFor(model => model.Price)
+        </dt>
+    </dl>
+    <br />
+    <div>
+        <div>
+            @Html.HiddenFor(model => model.PackageId)
+            @Html.HiddenFor(model => model.Price)
+            @Html.DropDownList("cardOptions", "-select CardType-")
+            <br />
+            @Html.Label("Card Number")
+            @Html.TextBox("cardNumber")
+            <br />
+            @Html.Label("Expiration Date")
+            @Html.TextBox("expirationDate")
+            <br />
+            @Html.Label("CVC")
+            @Html.TextBox("cvc")
+        </div>
+        <br />
+        <div>
+            <div style="float:right; background-color:limegreen">
+                <input id="btnBuy" type="submit" value="Confirm Buy" />
+            </div>
+        </div>
+    </div>
+</div>

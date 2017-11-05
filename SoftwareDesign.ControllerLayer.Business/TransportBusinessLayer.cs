@@ -1,20 +1,20 @@
-﻿using SoftwareDesign.Model;
-using SoftwareDesign.Model.DataModel;
-using System;
+﻿using SoftwareDesign.DataAccessLayer;
+using SoftwareDesign.DataAccessLayer.DataModel;
+using SoftwareDesign.Entities;
 using System.Collections.Generic;
 
 namespace SoftwareDesign.ControllerLayer.Business
 {
     public class TransportBusinessLayer
     {
-        public List<Transport> ListTransports()
+        public List<TransportEntity> ListTransports()
         {
-            return new TransportRepository().ListTransports();            
+            return new TransportDataAccess().ListTransports();
         }
 
-        public Transport GetTransport(int id)
+        public TransportEntity GetTransport(int id)
         {
-            return new TransportRepository().GetTransport(id);
+            return new TransportDataAccess().GetTransport(id);
         }
     }
 }

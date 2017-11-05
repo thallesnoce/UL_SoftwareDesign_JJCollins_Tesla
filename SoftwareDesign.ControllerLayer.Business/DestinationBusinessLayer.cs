@@ -1,5 +1,6 @@
-﻿using SoftwareDesign.Model;
-using SoftwareDesign.Model.DataModel;
+﻿using SoftwareDesign.DataAccessLayer;
+using SoftwareDesign.DataAccessLayer.DataModel;
+using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -7,14 +8,14 @@ namespace SoftwareDesign.ControllerLayer.Business
 {
     public class DestinationBusinessLayer
     {
-        public List<Destination> ListDestinations()
+        public List<DestinationEntity> ListDestinations()
         {
-            return new DestinationRepository().ListDestinations();
+            return new DestinationDataAccess().ListDestinations();
         }
 
-        public Destination GetDestination(int id)
+        public DestinationEntity GetDestination(int id)
         {
-            return new DestinationRepository().GetDestination(id);
+            return new DestinationDataAccess().GetDestination(id);
         }
     }
 }

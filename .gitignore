@@ -14,3 +14,8 @@
 /SoftwareDesign.ControllerLayer.Business.Test/obj/Debug
 /SoftwareDesign.ControllerLayer.Business/bin/Debug
 /SoftwareDesign.ControllerLayer.Business/obj/Debug
+/SoftwareDesign.ControllerLayer.API/bin
+/SoftwareDesign.DataAccessLayer/bin/Debug
+/SoftwareDesign.DataAccessLayer/obj/Debug
+/SoftwareDesign.ThirdPartyCreditCard/bin
+/SoftwareDesign.ThirdPartyCreditCard/obj/Debug

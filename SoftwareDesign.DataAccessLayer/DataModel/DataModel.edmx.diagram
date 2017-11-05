@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c76db748a188454d9b3c59e50cb80817" Name="Diagram1" ZoomLevel="74" >
+        <EntityTypeShape EntityType="DataModel.Package" Width="1.5" PointX="4.375" PointY="1.5" />
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="11.125" PointY="0.625" />
+        <EntityTypeShape EntityType="DataModel.Client" Width="1.5" PointX="9.375" PointY="3" />
+        <InheritanceConnector EntityType="DataModel.Client" />
+        <EntityTypeShape EntityType="DataModel.Staff" Width="1.5" PointX="13" PointY="3.25" />
+        <InheritanceConnector EntityType="DataModel.Staff" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="DataModel.Destination" Width="1.5" PointX="7.625" PointY="6.875" />
+        <EntityTypeShape EntityType="DataModel.Hotel" Width="1.5" PointX="2.75" PointY="6.875" />
+        <EntityTypeShape EntityType="DataModel.Transport" Width="1.5" PointX="5.125" PointY="6.875" />
+        <EntityTypeShape EntityType="DataModel.Payment" Width="1.5" PointX="0.625" PointY="7.375" />
+        <AssociationConnector Association="DataModel.HotelPackage" />
+        <AssociationConnector Association="DataModel.TransportPackage" />
+        <AssociationConnector Association="DataModel.DestinationPackage" />
+        <AssociationConnector Association="DataModel.PaymentPackage" />
+        <AssociationConnector Association="DataModel.ClientPackage" />
+        <EntityTypeShape EntityType="DataModel.Traveler" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="DataModel.PackageTraveler" />
+        <EntityTypeShape EntityType="DataModel.PackageServices" Width="1.5" PointX="0.5" PointY="3.75" />
+        <AssociationConnector Association="DataModel.PackagePackageServices" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,21 +1,14 @@
 ﻿using SoftwareDesign.ControllerLayer.Business;
-using SoftwareDesign.Model.DataModel;
+using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SoftwareDesign.View.Controllers
 {
     public class PackageController : Controller
     {
-        // GET: Package
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         /// <summary>
         /// Thalles and Jessie Use Case Implementation
         /// </summary>
@@ -31,7 +24,7 @@ namespace SoftwareDesign.View.Controllers
             ViewBag.DestinationId = new DestinationBusinessLayer().ListDestinations().Select(x => new SelectListItem() { Text = x.Name, Value = x.DestinationId.ToString() });
             ViewBag.HotelId = new HotelBusinessLayer().ListHoteis().Select(x => new SelectListItem() { Text = x.Name, Value = x.HotelId.ToString() });
 
-            List<Package> packageList = new List<Package>();
+            var packageList = new List<PackageEntity>();
             if (TransportId.HasValue && DestinationId.HasValue && HotelId.HasValue)
             {
                 packageList = new PackageBusinessLayer().SearchPackage(TransportId.Value, DestinationId.Value, new DateTime(), new DateTime());
@@ -40,21 +33,35 @@ namespace SoftwareDesign.View.Controllers
             return View(packageList);
         }
 
+        [HttpGet]
+        public ActionResult CalculatePrice(int packageId, string additionalServices)
+        {
+            var package = new PackageBusinessLayer();
+            var additionalServicesAux = additionalServices.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+            var price = package.CalculatePrice(packageId, additionalServicesAux);
+            var packagePrice = new PackageEntity() { Price = price };
+
+            ViewBag.cardOptions = new List<SelectListItem>() {
+                    new SelectListItem(){ Text= "Credit Card",Value="1" },
+                    new SelectListItem(){ Text= "Debit Card", Value="2"}
+                };
+
+            return PartialView("_calculatePrice", packagePrice);
+        }
+
         /// <summary>
         /// Process the Payment of the Package
         /// </summary>
         /// <param name="packageId"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult BuyPackage(int packageId)
+        public ActionResult BuyPackage(int packageId, decimal price, int cardOptions, string cardNumber, string expirationDate, string cvc)
         {
             var package = new PackageBusinessLayer();
-            var clientId = 1;//Get Clientid;
+            var clientId = 1;
 
-            package.BuyPackage(packageId, clientId);
-            //TODO: WIP
-            //TODO: Check the use case and do this implementation
-            return View();
+            var result = package.BuyPackage(packageId, clientId, price, cardOptions, cardNumber, expirationDate, cvc);
+            return PartialView("_confirmPayment", result.Item2);
         }
 
         /// <summary>

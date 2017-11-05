@@ -1,20 +1,20 @@
-﻿using SoftwareDesign.Model;
-using SoftwareDesign.Model.DataModel;
-using System;
+﻿using SoftwareDesign.DataAccessLayer;
+using SoftwareDesign.DataAccessLayer.DataModel;
+using SoftwareDesign.Entities;
 using System.Collections.Generic;
 
 namespace SoftwareDesign.ControllerLayer.Business
 {
     public class HotelBusinessLayer
     {
-        public List<Hotel> ListHoteis()
+        public List<HotelEntity> ListHoteis()
         {
-            return new HotelRepository().ListHoteis();
+            return new HotelDataAccess().ListHoteis();
         }
 
-        public Hotel GetHotel(int id)
+        public HotelEntity GetHotel(int id)
         {
-            return new HotelRepository().GetHotel(id);
+            return new HotelDataAccess().GetHotel(id);
         }
     }
 }

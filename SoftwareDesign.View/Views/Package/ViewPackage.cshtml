@@ -1,4 +1,4 @@
-﻿@model SoftwareDesign.Model.DataModel.Package
+﻿@model SoftwareDesign.Entities.PackageEntity
 
 @{
     ViewBag.Title = "ViewPackage";
@@ -49,10 +49,16 @@
         <dd>
             @Html.DisplayFor(model => model.EndDate)
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Buy Package", "BuyPackage", new { packageId = Model.PackageId }) |
+<p>    
+    <a href="#" id="btnBuyPackage">Buy Package</a> |
     @Html.ActionLink("Back", "Search")
 </p>
+@section scripts
+{
+    <script src="~/App_Scripts/Package.js"></script>
+    <script>
+        var package = new Package.BuyPackageController();
+    </script>
+}
