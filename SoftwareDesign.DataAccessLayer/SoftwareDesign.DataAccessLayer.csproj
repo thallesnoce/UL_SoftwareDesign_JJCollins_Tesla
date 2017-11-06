@@ -98,6 +98,7 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="DestinationDataAccess.cs" />
+    <Compile Include="EnquireDataAccess.cs" />
     <Compile Include="Helper\FlatFileHelper.cs" />
     <Compile Include="HotelDataAccess.cs" />
     <Compile Include="PackageDataAccess.cs" />

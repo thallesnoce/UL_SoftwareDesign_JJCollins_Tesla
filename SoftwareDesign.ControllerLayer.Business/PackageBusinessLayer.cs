@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using static SoftwareDesign.Entities.Enums.Enums;
 
-namespace SoftwareDesign.ControllerLayer.Business
+namespace SoftwareDesign.ControllerLayer.Business//Design Pattern about observer should be impelemented here.
 {
     public class PackageBusinessLayer
     {

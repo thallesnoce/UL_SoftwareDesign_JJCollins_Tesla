@@ -54,7 +54,10 @@
 <p>    
     <a href="#" id="btnBuyPackage">Buy Package</a> |
     @Html.ActionLink("Back", "Search")
+
 </p>
+
+@Html.ActionLink("Make Enquire", "MakeEnrquire","Enquire",new { packageId = Model.PackageId})
 @section scripts
 {
     <script src="~/App_Scripts/Package.js"></script>

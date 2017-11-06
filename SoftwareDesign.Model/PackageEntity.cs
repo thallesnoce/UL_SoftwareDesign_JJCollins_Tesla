@@ -25,7 +25,8 @@ namespace SoftwareDesign.Entities
         decimal GetPrice();
     }
 
-    /// <summary>
+    /// <summary
+    /// >
     /// Concrete Component
     /// </summary>
     public class PackageEntity : IPackage
