@@ -18,7 +18,7 @@ namespace SoftwareDesign.View.Controllers
         /// <param name="endDate"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Search(int? TransportId, int? DestinationId, int? HotelId)
+        public ActionResult Search(int? TransportId, int? DestinationId, int? HotelId , string StartDate,  string EndDate)
         {
             ViewBag.TransportId = new TransportBusinessLayer().ListTransports().Select(x => new SelectListItem() { Text = x.Name, Value = x.TransportId.ToString() });
             ViewBag.DestinationId = new DestinationBusinessLayer().ListDestinations().Select(x => new SelectListItem() { Text = x.Name, Value = x.DestinationId.ToString() });
@@ -27,7 +27,8 @@ namespace SoftwareDesign.View.Controllers
             var packageList = new List<PackageEntity>();
             if (TransportId.HasValue && DestinationId.HasValue && HotelId.HasValue)
             {
-                packageList = new PackageBusinessLayer().SearchPackage(TransportId.Value, DestinationId.Value, new DateTime(), new DateTime());
+                PackageBusinessLayer businessLayer = new PackageBusinessLayer();
+                packageList = businessLayer.SearchPackage(TransportId.Value, DestinationId.Value, HotelId.Value,new DateTime(), new DateTime());
             }
 
             return View(packageList);
