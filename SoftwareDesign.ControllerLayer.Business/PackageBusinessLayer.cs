@@ -63,10 +63,10 @@ namespace SoftwareDesign.ControllerLayer.Business//Design Pattern about observer
             return new Tuple<bool, string>(isSuccess, message);
         }
 
-        public List<PackageEntity> SearchPackage(int transportId, int hotelId, DateTime startDate, DateTime endDate)
+        public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId,  DateTime startDate, DateTime endDate)
         {
             //TODO: Use a design pattern to create an instance of Repository
-            return new PackageDataAccess().SearchPackage(transportId, hotelId, startDate, endDate);
+            return new PackageDataAccess().SearchPackage(transportId, destinationId, hotelId, startDate, endDate);
         }
 
         public PackageEntity GetPackage(int packageId)

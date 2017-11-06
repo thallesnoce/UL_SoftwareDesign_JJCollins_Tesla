@@ -14,10 +14,15 @@
     <div>
         <div>
             @Html.DropDownList("TransportId", "-select transport-")
-            <br />
+          
             @Html.DropDownList("DestinationId", "-select destination-")
-            <br />
+          
             @Html.DropDownList("HotelId", "-select hotel-")
+            <br />
+            @Html.Label("StartDate")
+            @Html.TextArea("StartDate")
+            @Html.Label("EndtDate")
+            @Html.TextArea("EndDate")
         </div>
         <br />
         <div>
@@ -59,8 +64,12 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Hotel)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.StartDate)
             </td>
