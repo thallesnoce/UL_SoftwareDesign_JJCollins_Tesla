@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\SoftwareDesign.View\\Views",
+    "\\SoftwareDesign.View\\Views\\Package"
   ],
   "SelectedNode": "\\SoftwareDesign.sln",
   "PreviewInSolutionExplorer": false
