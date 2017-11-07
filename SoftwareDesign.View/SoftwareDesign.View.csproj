@@ -159,6 +159,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EnquireController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagePackageBusinessLayer.cs" />
+    <Compile Include="Controllers\ManagePackageController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,6 +209,7 @@
     <Content Include="Views\Package\_confirmPayment.cshtml" />
     <Content Include="Views\Package\_calculatePrice.cshtml" />
     <Content Include="Views\Enquire\Index.cshtml" />
+    <Content Include="Views\ManagePackage\ManagePackageView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App_Scripts\Package.ts" />
