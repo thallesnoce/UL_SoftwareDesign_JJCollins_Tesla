@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SoftwareDesign.Entities
 {
     ///*
-    ///Implementation if Decorator Design Pattern
+    ///Implementation of Decorator Design Pattern
     ///
     /// Pair @Thalles and Jessie
     /// */
@@ -74,7 +74,7 @@ namespace SoftwareDesign.Entities
     /// <summary>
     /// Concrete Decorator
     /// 
-    /// HoneyMoon service add to the package
+    /// HoneyMoon service added to the package
     /// </summary>
     public class HoneyMoonPackage : PackageServices
     {
@@ -93,7 +93,7 @@ namespace SoftwareDesign.Entities
     /// <summary>
     /// Concrete Decorator
     /// 
-    /// Bachelor Party service add to the package
+    /// Bachelor Party service added to the package
     /// </summary>
     public class BachelorPartyPackage : PackageServices
     {
@@ -112,7 +112,7 @@ namespace SoftwareDesign.Entities
     /// <summary>
     /// Concrete Decorator
     /// 
-    /// BirthDay service add to the package
+    /// BirthDay service added to the package
     /// </summary>
     public class BirthDayPartyPackage : PackageServices
     {

@@ -74,7 +74,7 @@ namespace SoftwareDesign.Entities.Helper
         {
             var flatFile = new FlatFile();
 
-            /*Transportes*/
+            /*Transport types*/
             flatFile.Transports = new List<TransportEntity>() {
                 new TransportEntity() { TransportId = 1, Name = "Airplane", Description = "Airplane Otion", TransportPartnerId = "1" },
                 new TransportEntity() { TransportId = 2, Name = "Bus", Description = "Bus Option", TransportPartnerId = "2" }

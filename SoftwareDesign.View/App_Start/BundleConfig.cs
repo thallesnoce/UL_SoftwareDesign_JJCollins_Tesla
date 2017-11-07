@@ -9,6 +9,7 @@ namespace SoftwareDesign.View
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                      //  "~/Scripts/jquery-ui.js",
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -25,6 +26,7 @@ namespace SoftwareDesign.View
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      // "~/Content/jquery-ui.css",
                       "~/Content/site.css"));
         }
     }
