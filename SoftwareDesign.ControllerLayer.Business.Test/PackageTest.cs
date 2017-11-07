@@ -16,7 +16,7 @@ namespace SoftwareDesign.ControllerLayer.Business.Test
         public void SearchPackage_Success()
         {
             var package = new PackageBusinessLayer();
-            package.SearchPackage(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<DateTime>());
+            package.SearchPackage(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<DateTime>());
         }
 
         /// <summary>
