@@ -23,6 +23,11 @@ namespace SoftwareDesign.DataAccessLayer
             && x.EndDate <= endDate).Select(x => x).ToList();
         }
 
+        public List<PackageEntity> ListPackage()
+        {
+            throw new NotImplementedException();
+        }
+
         public PackageEntity GetPackage(int packageId)
         {
             var data = FlatFileHelper.ListAllPackages();
