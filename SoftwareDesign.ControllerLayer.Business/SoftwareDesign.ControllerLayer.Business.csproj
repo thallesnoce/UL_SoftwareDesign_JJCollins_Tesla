@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnquireBusinessLayer.cs" />
+    <Compile Include="EnquireObserver.cs" />
     <Compile Include="ManagePackageBusinessLayer.cs" />
+    <Compile Include="PackageFactory.cs" />
     <Compile Include="TransportBusinessLayer.cs" />
     <Compile Include="DestinationBusinessLayer.cs" />
     <Compile Include="HotelBusinessLayer.cs" />

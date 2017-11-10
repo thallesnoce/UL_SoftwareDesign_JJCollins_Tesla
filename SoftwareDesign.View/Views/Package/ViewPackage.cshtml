@@ -51,13 +51,12 @@
         </dd>
     </dl>
 </div>
-<p>    
+<p>
     <a href="#" id="btnBuyPackage">Buy Package</a> |
     @Html.ActionLink("Back", "Search")
-
 </p>
 
-@Html.ActionLink("Make Enquire", "MakeEnrquire","Enquire",new { packageId = Model.PackageId})
+@Html.ActionLink("Make Enquire", "Index", "Enquire", new { packageId = Model.PackageId }, null)
 @section scripts
 {
     <script src="~/App_Scripts/Package.js"></script>

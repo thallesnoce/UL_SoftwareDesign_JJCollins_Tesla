@@ -101,6 +101,8 @@
     <Compile Include="EnquireDataAccess.cs" />
     <Compile Include="Helper\FlatFileHelper.cs" />
     <Compile Include="HotelDataAccess.cs" />
+    <Compile Include="ClientDataAccess.cs" />
+    <Compile Include="SingletonDBContext.cs" />
     <Compile Include="PackageDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransportDataAccess.cs" />

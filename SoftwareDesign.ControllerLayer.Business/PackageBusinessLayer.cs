@@ -6,30 +6,17 @@ using System.Collections.Generic;
 using System.Net.Http;
 using static SoftwareDesign.Entities.Enums.Enums;
 
-namespace SoftwareDesign.ControllerLayer.Business//Design Pattern about observer should be impelemented here.
+namespace SoftwareDesign.ControllerLayer.Business
 {
     public class PackageBusinessLayer
     {
         public decimal CalculatePrice(int packageId, List<int> aditionalServices)
         {
-            var packageData = new PackageDataAccess().GetPackage(packageId);
-            IPackage package = new PackageEntity() { PackageId = packageData.PackageId, Price = packageData.Price };
+            IPackage package = new PackageDataAccess().GetPackage(packageId);
 
             foreach (var item in aditionalServices)
             {
-                //TODO: Use the Factory Design Pattern
-                if (item == (int)ServiceType.HonneyMoon)
-                {
-                    package = new HoneyMoonPackage(package);
-                }
-                else if (item == (int)ServiceType.BachelorPartyHoliday)
-                {
-                    package = new BachelorPartyPackage(package);
-                }
-                if (item == (int)ServiceType.BirthDayParty)
-                {
-                    package = new BirthDayPartyPackage(package);
-                }
+                //PackageFactory.CreatePackageServiceInstace(package, item);
             }
 
             return package.GetPrice();
@@ -37,16 +24,51 @@ namespace SoftwareDesign.ControllerLayer.Business//Design Pattern about observer
 
         public Tuple<Boolean, string> BuyPackage(int packageId, int clientId, decimal price, int cardOptions, string cardNumber, string expirationDate, string cvc)
         {
+            //var packageData = new UserDataAccess().GetPackage(packageId);
+            //TODO: Implement the clientId
+
             //TODO: Implement the Design Patter Interceptor here.
+
+            var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
+
+            return result;
+        }
+
+        public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return new PackageDataAccess().SearchPackage(transportId, destinationId, hotelId, startDate, endDate);
+        }
+
+        public PackageEntity GetPackage(int packageId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PackageEntity ViewPackage(int packageId)
+        {
+            return new PackageDataAccess().GetPackage(packageId);
+        }
+
+        /// <summary>
+        /// This Method Simulate a comunication with the Third Part Software. 
+        /// In this case Credit Card Operator System.
+        /// Was Created a API to fake this comunication.
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="cardNumber"></param>
+        /// <param name="expirationDate"></param>
+        /// <param name="cvc"></param>
+        /// <returns></returns>
+        private static Tuple<bool, string> CheckWithThirdPartCrediCard(decimal price, string cardNumber, string expirationDate, string cvc)
+        {
+            bool isSuccess = false;
+            string message = string.Empty;
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:58561/");
-            client.DefaultRequestHeaders.Accept.Add(
-                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage response = client.GetAsync($"CrediCard/PostRegisterBuy/{cardNumber}/{expirationDate}/{cvc}/{price}").Result;
-            var isSuccess = false;
-
-            var message = string.Empty;
             if (response.IsSuccessStatusCode)
             {
                 var transactionStatus = response.Content.ReadAsStringAsync().Result.Split('|');
@@ -61,22 +83,6 @@ namespace SoftwareDesign.ControllerLayer.Business//Design Pattern about observer
             }
 
             return new Tuple<bool, string>(isSuccess, message);
-        }
-
-        public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId,  DateTime startDate, DateTime endDate)
-        {
-            //TODO: Use a design pattern to create an instance of Repository
-            return new PackageDataAccess().SearchPackage(transportId, destinationId, hotelId, startDate, endDate);
-        }
-
-        public PackageEntity GetPackage(int packageId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PackageEntity ViewPackage(int packageId)
-        {
-            return new PackageDataAccess().GetPackage(packageId);
         }
     }
 }

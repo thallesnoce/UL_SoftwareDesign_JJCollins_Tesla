@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ClientEntity.cs" />
     <Compile Include="DestinationEntity.cs" />
+    <Compile Include="EnquireEntity.cs" />
     <Compile Include="HotelEntity.cs" />
     <Compile Include="PackageEntity.cs" />
     <Compile Include="Enums\Enums.cs" />

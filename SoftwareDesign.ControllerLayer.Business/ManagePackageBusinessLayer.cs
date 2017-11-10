@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SoftwareDesign.ControllerLayer.Business
 {
-    class ManagePackageBusinessLayer
+    public class ManagePackageBusinessLayer
     {
         public List<PackageEntity> ListPackage()
         {
@@ -18,7 +18,6 @@ namespace SoftwareDesign.ControllerLayer.Business
         public PackageEntity GetPackage(int PackageId)
         {
             return new PackageDataAccess().GetPackage(PackageId);
-
         }
     }
 }

@@ -9,20 +9,20 @@
 
 <h4>Search Packages</h4>
 
-@using (Html.BeginForm("Search","Package", FormMethod.Get))
+@using (Html.BeginForm("Search", "Package", FormMethod.Get))
 {
     <div>
         <div>
             @Html.DropDownList("TransportId", "-select transport-")
-          
+
             @Html.DropDownList("DestinationId", "-select destination-")
-          
+
             @Html.DropDownList("HotelId", "-select hotel-")
             <br />
             @Html.Label("StartDate")
-            @Html.TextArea("StartDate")
+            @Html.TextBox("StartDate")
             @Html.Label("EndtDate")
-            @Html.TextArea("EndDate")
+            @Html.TextBox("EndDate")
         </div>
         <br />
         <div>
@@ -64,9 +64,6 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Hotel)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
 
@@ -81,11 +78,12 @@
             </td>
         </tr>
     }
-
 </table>
-
+@section scripts{
 <script type="text/javascript">
     $(document).ready(function () {
         $("#StartDate").datepicker();
+        $("#EndDate").datepicker();
     });
 </script>
+}

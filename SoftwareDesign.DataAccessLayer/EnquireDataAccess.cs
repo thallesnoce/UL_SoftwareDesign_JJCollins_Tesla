@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftwareDesign.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,21 @@ using System.Threading.Tasks;
 
 namespace SoftwareDesign.DataAccessLayer
 {
-   public class EnquireDataAccess
+    /// <summary>
+    /// Fake DataBase
+    /// For all Where clauses, we are using LINQ.
+    /// </summary>
+    public class EnquireDataAccess
     {
+        public EnquireEntity GetEnquire(EnquireEntity enquire)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RespondeEnquire(EnquireEntity enquire)
+        {
+            throw new NotImplementedException();
+        }
 
         public void CreateEnquire(int packageId,String Message)
         {   
@@ -17,8 +31,5 @@ namespace SoftwareDesign.DataAccessLayer
            //
         }
     }
-    
-
-        
  }
     
