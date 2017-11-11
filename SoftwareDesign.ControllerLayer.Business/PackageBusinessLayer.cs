@@ -39,6 +39,29 @@ namespace SoftwareDesign.ControllerLayer.Business
             //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().SearchPackage(transportId, destinationId, hotelId, startDate, endDate);
         }
+        // Monica and hang use case implementation 11/11/2017 
+        public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description,int Price, DateTime startDate, DateTime endDate)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return new PackageDataAccess().DetailsPackage(Name, PackageId, Description, Price, startDate,endDate);
+        }
+         public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description,int Price, DateTime startDate, DateTime endDate)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return new PackageDataAccess().InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+        }
+          public List<PackageEntity> EditPackage(String Name, int PackageId,String Description)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return new PackageDataAccess().EditPackage(Name, PackageId,Description);
+        }
+         public List<PackageEntity> DeletePackage( int PackageId)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return new PackageDataAccess().DeletePackage( PackageId);
+        }
+
+
 
         public PackageEntity GetPackage(int packageId)
         {
