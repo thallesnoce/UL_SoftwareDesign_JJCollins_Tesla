@@ -31,53 +31,44 @@ namespace SoftwareDesign.DataAccessLayer
             .Select(x => x)
             .ToList();
         }
-       //by monica and hang 11/11/2017
-        public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description,int Price, DateTime startDate, DateTime endDate)
-        
+
+        //by monica and hang 11/11/2017
+        public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+
         {
             var data = FlatFileHelper.ListAllPackages();
-                 return data.Select(x=>x).ToList();
+            return data.Select(x => x).ToList();
 
-            
             //Getting the DBContext through a singleton design pattern
             //SingletonDBContext.GetContext().Packages.ToList();
-
-            
         }
 
-         public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description,int Price, DateTime startDate, DateTime endDate)
-        
+        public PackageEntity InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             var data = FlatFileHelper.ListAllPackages();
-              return data.Add(x=>x).ToList();
-              return RedirectToAction("Index");
+            return data.First();
+            //return RedirectToAction("Index");
             //Getting the DBContext through a singleton design pattern
             //SingletonDBContext.GetContext().Packages.ToList();
-
-            
         }
-         public List<PackageEntity> EditPackage(String Name,int PackageId,String Description)
-        
+
+        public void EditPackage(String Name, int PackageId, String Description)
         {
             var data = FlatFileHelper.ListAllPackages();
             // Thalles please help here.
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
             //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();
-
-            
+            //SingletonDBContext.GetContext().Packages.ToList();   
         }
-         public List<PackageEntity> DeletePackage(int PackageId)
-        
+
+        public void DeletePackage(int PackageId)
         {
             var data = FlatFileHelper.ListAllPackages();
-             return data.Where(x=>x.PackageId==PackageId);
+            //return data.Where(x=>x.PackageId==PackageId);
             //thalles pls help here.
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
             //Getting the DBContext through a singleton design pattern
             //SingletonDBContext.GetContext().Packages.ToList();
-
-            
         }
 
 
