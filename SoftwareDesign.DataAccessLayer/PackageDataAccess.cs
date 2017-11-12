@@ -43,6 +43,10 @@ namespace SoftwareDesign.DataAccessLayer
             //SingletonDBContext.GetContext().Packages.ToList();
         }
 
+        /*
+         TN: I've created the method in the flatfile EditPackage
+         No return needed also. should be void.
+         */
         public PackageEntity InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             var data = FlatFileHelper.ListAllPackages();
@@ -52,6 +56,11 @@ namespace SoftwareDesign.DataAccessLayer
             //SingletonDBContext.GetContext().Packages.ToList();
         }
 
+        /*TN: should be void
+         * No return needed 
+         
+            I've created the method in the flatfile EditPackage
+             */
         public void EditPackage(String Name, int PackageId, String Description)
         {
             var data = FlatFileHelper.ListAllPackages();
@@ -61,6 +70,12 @@ namespace SoftwareDesign.DataAccessLayer
             //SingletonDBContext.GetContext().Packages.ToList();   
         }
 
+        /*TN: should be void (no return needed)
+         
+         I've created the method in the flatfile DeletePackage
+
+            usage: FlatFile.Delete(PackageId);
+             */
         public void DeletePackage(int PackageId)
         {
             var data = FlatFileHelper.ListAllPackages();
