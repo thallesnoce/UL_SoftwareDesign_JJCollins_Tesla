@@ -5,11 +5,41 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using static SoftwareDesign.Entities.Enums.Enums;
+using System.Collections;
+
 
 namespace SoftwareDesign.ControllerLayer.Business
 {
-    public class PackageBusinessLayer
+    public class PackageBusinessLayer  //Subject
     {
+        private ArrayList observers;
+        private int state;
+
+        public int State { get => state; set => state = value;  }
+        
+        public PackageBusinessLayer()
+        {
+            observers = new ArrayList();
+        }
+        public void registerObserver(Observer o)
+        {
+            observers.Add(o);
+        }
+        public void removeObserver(Observer o)
+        {
+            int i = observers.IndexOf(o);
+            if (i>=0)
+            {
+                observers.Remove(i);
+            }
+        }
+        public void notifyAllObservers()
+        {
+            foreach (Observer observer in observers)
+            {
+                observer.updateState(state);
+            }
+        }
         public decimal CalculatePrice(int packageId, List<int> aditionalServices)
         {
             IPackage package = new PackageDataAccess().GetPackage(packageId);
@@ -70,6 +100,10 @@ namespace SoftwareDesign.ControllerLayer.Business
 
         public PackageEntity ViewPackage(int packageId)
         {
+            state = packageId;
+            ConcreteObserver co = new ConcreteObserver();
+            registerObserver(co);
+            notifyAllObservers();
             return new PackageDataAccess().GetPackage(packageId);
         }
 

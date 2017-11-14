@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SoftwareDesign.View.Controllers
 {
-    public class PackageController : Controller
+    public class PackageController : Controller  //subject
     {
         /// <summary>
         /// Thalles and Jessie Use Case Implementation
@@ -17,6 +17,7 @@ namespace SoftwareDesign.View.Controllers
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
         /// <returns></returns>
+        /// 
         [HttpGet]
         public ActionResult Search(int? TransportId, int? DestinationId, int? HotelId, string StartDate, string EndDate)
         {
@@ -85,5 +86,6 @@ namespace SoftwareDesign.View.Controllers
            //  var list = new PackageBusinessLayer()
              return View(list);
          }*/
+        
     }
 }
