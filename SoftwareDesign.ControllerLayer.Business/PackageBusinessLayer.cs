@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace SoftwareDesign.ControllerLayer.Business
 {
-    public class PackageBusinessLayer  //Subject
+    public class PackageBusinessLayer  //Subject: Package is being observed by interface Observer
     {
         private ArrayList observers;
         private int state;
@@ -21,11 +21,11 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
             observers = new ArrayList();
         }
-        public void registerObserver(Observer o)
+        public void registerObserver(Observer o) // Attach 
         {
             observers.Add(o);
         }
-        public void removeObserver(Observer o)
+        public void removeObserver(Observer o) // Detach
         {
             int i = observers.IndexOf(o);
             if (i>=0)
@@ -33,7 +33,7 @@ namespace SoftwareDesign.ControllerLayer.Business
                 observers.Remove(i);
             }
         }
-        public void notifyAllObservers()
+        public void notifyAllObservers() // Update
         {
             foreach (Observer observer in observers)
             {
