@@ -120,7 +120,23 @@ namespace SoftwareDesign.Entities.Helper
             var jsonString = JsonConvert.SerializeObject(flatFile);
             File.WriteAllText(flatFileLocation, jsonString);
         }
-    }
+
+
+        public void AddPaclage(PackageEntity package) {
+            Data.Packages.Add(package);
+        }
+
+        public void Remove(int id) {
+            Data.Packages.RemoveAll(x => x.PackageId == id);
+        }
+
+        public void Update(int id, string name, string description) {
+            var package = Data.Packages.FirstOrDefault(x => x.PackageId == id);
+            package.Name = name;
+            package.Description = description;
+        }
+        
+    
 
     public class FlatFile
     {
