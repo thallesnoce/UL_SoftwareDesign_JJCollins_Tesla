@@ -122,7 +122,7 @@ namespace SoftwareDesign.Entities.Helper
         }
 
 
-        public void AddPaclage(PackageEntity package) {
+        public void AddPackage(PackageEntity package) {
             Data.Packages.Add(package);
         }
 

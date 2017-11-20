@@ -78,7 +78,8 @@ namespace SoftwareDesign.ControllerLayer.Business
         public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             //TODO: Use a design pattern to create an instance of Repository
-            return null;//new PackageDataAccess().InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+            PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+            return null;
         }
         public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
         {
