@@ -73,9 +73,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EndDate)
             </td>
-            <td>
-                @Html.ActionLink("View Package", "ViewPackage", new { packageId = item.PackageId })
-            </td>
+            
+                <td>
+                    @Html.ActionLink("View Package", "ViewPackage", new { packageId = item.PackageId })      
+                </td>
+            
         </tr>
     }
 </table>
@@ -85,5 +87,7 @@
         $("#StartDate").datepicker();
         $("#EndDate").datepicker();
     });
+
+   
 </script>
 }

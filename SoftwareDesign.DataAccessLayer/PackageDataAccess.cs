@@ -47,10 +47,13 @@ namespace SoftwareDesign.DataAccessLayer
          TN: I've created the method in the flatfile EditPackage
          No return needed also. should be void.
          */
-        public PackageEntity InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+        public void InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
-            var data = FlatFileHelper.ListAllPackages();
-            return data.First();
+
+            
+            PackageStore a= new PackageStore(Name,PackageId,Description,Price,startDate,endDate);
+            var data = FlatFileHelper.AddPackage(a);
+            
             //return RedirectToAction("Index");
             //Getting the DBContext through a singleton design pattern
             //SingletonDBContext.GetContext().Packages.ToList();
@@ -63,7 +66,8 @@ namespace SoftwareDesign.DataAccessLayer
              */
         public void EditPackage(String Name, int PackageId, String Description)
         {
-            var data = FlatFileHelper.ListAllPackages();
+            FlatFileHelper.Update(Name, PackageId,Description);
+
             // Thalles please help here.
             //return RedirectToAction("Index");
             //Getting the DBContext through a singleton design pattern
@@ -78,7 +82,7 @@ namespace SoftwareDesign.DataAccessLayer
              */
         public void DeletePackage(int PackageId)
         {
-            var data = FlatFileHelper.ListAllPackages();
+             FlatFileHelper.Remove(PackageId);
             //return data.Where(x=>x.PackageId==PackageId);
             //thalles pls help here.
             //return RedirectToAction("Index");
@@ -97,5 +101,25 @@ namespace SoftwareDesign.DataAccessLayer
             var data = FlatFileHelper.ListAllPackages();
             return data.Where(x => x.PackageId == packageId).FirstOrDefault();
         }
+        public class PackageStore{
+            String Name1;
+            int PackageId1;
+            String Description1;
+            int Price1;
+            DateTime startDate1;
+            DateTime endDate1;
+            PackageStore(String Name,int PackageId,String Description,int Price,DateTime startDate,DateTime endDate)
+                {
+                Name1=Name;
+                PackageId1=PackageId;
+                Description1=Description;
+                Price1=Price;
+                startDate1=startDate;
+                endDate1=endDate;
+             }
+
+
+
+         }
     }
 }
