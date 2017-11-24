@@ -59,8 +59,10 @@ namespace SoftwareDesign.ControllerLayer.Business
 
             //TODO: Implement the Design Patter Interceptor here.
 
-            var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
+            //var buyPackage = new BuyPackageBusinessLayer(price, cardNumber, expirationDate, cvc);
+            //buyPackage.
 
+            var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
             return result;
         }
 
@@ -78,7 +80,7 @@ namespace SoftwareDesign.ControllerLayer.Business
         public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             //TODO: Use a design pattern to create an instance of Repository
-            PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+            //PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
             return null;
         }
         public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)

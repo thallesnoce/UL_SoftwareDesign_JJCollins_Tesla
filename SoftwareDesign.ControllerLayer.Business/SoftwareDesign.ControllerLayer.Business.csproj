@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuyPackageBusinessLayer.cs" />
     <Compile Include="ConcreteObserver.cs" />
     <Compile Include="EnquireBusinessLayer.cs" />
     <Compile Include="EnquireObserver.cs" />
