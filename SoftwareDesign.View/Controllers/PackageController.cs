@@ -26,7 +26,10 @@ namespace SoftwareDesign.View.Controllers
 
             var packageList = new List<PackageEntity>();
             PackageBusinessLayer businessLayer = new PackageBusinessLayer();
-            packageList = businessLayer.SearchPackage(TransportId ?? 0, DestinationId ?? 0, HotelId ?? 0, new DateTime(), new DateTime());
+            var startDateaux = DateTime.Parse(StartDate);
+            var endDateaux = DateTime.Parse(EndDate);
+
+            packageList = businessLayer.SearchPackage(TransportId ?? 0, DestinationId ?? 0, HotelId ?? 0, startDateaux, endDateaux);
 
             return View(packageList);
         }

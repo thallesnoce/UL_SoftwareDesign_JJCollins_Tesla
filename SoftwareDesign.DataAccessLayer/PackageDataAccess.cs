@@ -25,7 +25,7 @@ namespace SoftwareDesign.DataAccessLayer
                         (transportId <= 0 || x.Transport.TransportId == transportId)
                         && (destinationId <= 0 || x.Destination.DestinationId == destinationId)
                         && (hotelId <= 0 || x.Hotel.HotelId == hotelId)
-            //&&  x.StartDate >=startDate 
+                        &&  x.StartDate >=startDate 
             //&& x.EndDate <= endDate
             )
             .Select(x => x)

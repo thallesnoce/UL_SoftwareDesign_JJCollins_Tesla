@@ -13,24 +13,38 @@ namespace SoftwareDesign.ControllerLayer.Business
     /// </summary>
     public class PackageFactory
     {
-        //Create a static Method "CreatePackageInstace" that returns a instace of IPackage
+        
 
+        public static IPackage CreatePackageInstance()
+        {
+            var package = new PackageEntity() { };
 
-
+            return package;
+        }
         //Create a static method "CreatePackageServiceInstace" that receives IPackage and int
-        //Put the below logic in there and returns  IPackage instace
+        public static IPackage CreatePackageServiceInstance(IPackage package, int ServiceType)
+         {
+            if (ServiceType == (int)Entities.Enums.Enums.ServiceType.HonneyMoon)
+            {
+                return new HoneyMoonPackage(package);
+            }
 
-        //if (serviceType == (int) ServiceType.HonneyMoon)
-        //{
-        //    package = new HoneyMoonPackage(package);
-        //}
-        //    else if (serviceType == (int) ServiceType.BachelorPartyHoliday)
-        //{
-        //    package = new BachelorPartyPackage(package);
-        //}
-        //    if (serviceType == (int) ServiceType.BirthDayParty)
-        //{
-        //    package = new BirthDayPartyPackage(package);
-        //}
+            else if (ServiceType == (int)Entities.Enums.Enums.ServiceType.BachelorPartyHoliday)
+            {
+                return new BachelorPartyPackage(package);
+            }
+
+            else if (ServiceType == (int)Entities.Enums.Enums.ServiceType.BirthDayParty)
+            {
+                return new BirthDayPartyPackage(package);
+            }
+            else return null;
+        }
     }
-}
+
+
+
+
+
+      
+    }

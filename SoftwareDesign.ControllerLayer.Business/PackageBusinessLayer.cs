@@ -14,9 +14,9 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
             IPackage package = new PackageDataAccess().GetPackage(packageId);
 
-            foreach (var item in aditionalServices)
+            foreach (var serviceType in aditionalServices)
             {
-                //PackageFactory.CreatePackageServiceInstace(package, item);
+                package = PackageFactory.CreatePackageServiceInstance(package, serviceType);
             }
 
             return package.GetPrice();
