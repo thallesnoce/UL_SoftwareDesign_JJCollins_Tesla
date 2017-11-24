@@ -11,40 +11,9 @@ namespace SoftwareDesign.ControllerLayer.Business
     /// <summary>
     /// Design Pattern Factory
     /// </summary>
-    public class PackageFactory
+    public  abstract class PackageFactory
     {
-        
-
-        public static IPackage CreatePackageInstance()
-        {
-            var package = new PackageEntity() { };
-
-            return package;
-        }
-        //Create a static method "CreatePackageServiceInstace" that receives IPackage and int
-        public static IPackage CreatePackageServiceInstance(IPackage package, int ServiceType)
-         {
-            if (ServiceType == (int)Entities.Enums.Enums.ServiceType.HonneyMoon)
-            {
-                return new HoneyMoonPackage(package);
-            }
-
-            else if (ServiceType == (int)Entities.Enums.Enums.ServiceType.BachelorPartyHoliday)
-            {
-                return new BachelorPartyPackage(package);
-            }
-
-            else if (ServiceType == (int)Entities.Enums.Enums.ServiceType.BirthDayParty)
-            {
-                return new BirthDayPartyPackage(package);
-            }
-            else return null;
-        }
+        public abstract IPackage FactoryMethod();
+        public abstract IPackage FactoryServiceMethod(IPackage package,int serviceType);
     }
-
-
-
-
-
-      
-    }
+}

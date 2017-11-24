@@ -46,7 +46,8 @@ namespace SoftwareDesign.ControllerLayer.Business
 
             foreach (var serviceType in aditionalServices)
             {
-                package = PackageFactory.CreatePackageServiceInstance(package, serviceType);
+                var packageFactory = new ConcretePackageFactory();
+                //packageFactory.FactoryMethod
             }
 
             return package.GetPrice();
@@ -78,7 +79,7 @@ namespace SoftwareDesign.ControllerLayer.Business
         public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             //TODO: Use a design pattern to create an instance of Repository
-            PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+            //PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
             return null;
         }
         public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)

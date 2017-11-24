@@ -51,8 +51,8 @@ namespace SoftwareDesign.DataAccessLayer
         {
 
             
-            PackageStore a= new PackageStore(Name,PackageId,Description,Price,startDate,endDate);
-            var data = FlatFileHelper.AddPackage(a);
+            //PackageStore a= new PackageStore(Name,PackageId,Description,Price,startDate,endDate);
+            //var data = FlatFileHelper.AddPackage(a);
             
             //return RedirectToAction("Index");
             //Getting the DBContext through a singleton design pattern
@@ -66,7 +66,7 @@ namespace SoftwareDesign.DataAccessLayer
              */
         public void EditPackage(String Name, int PackageId, String Description)
         {
-            FlatFileHelper.Update(Name, PackageId,Description);
+            //FlatFileHelper.Update(Name, PackageId,Description);
 
             // Thalles please help here.
             //return RedirectToAction("Index");
@@ -82,7 +82,7 @@ namespace SoftwareDesign.DataAccessLayer
              */
         public void DeletePackage(int PackageId)
         {
-             FlatFileHelper.Remove(PackageId);
+            // FlatFileHelper.Remove(PackageId);
             //return data.Where(x=>x.PackageId==PackageId);
             //thalles pls help here.
             //return RedirectToAction("Index");

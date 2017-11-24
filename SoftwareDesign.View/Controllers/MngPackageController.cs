@@ -82,7 +82,7 @@ namespace SoftwareDesign.View.Controllers
             //{
             //    // TODO: Add update logic here
             //    var business3 = new PackageBusinessLayer();
-              var package3 = business3.EditPackage(Name,packageId,Description);
+             // var package3 = business3.EditPackage(Name,packageId,Description);
             //    return View(package3);
 
             //   // return RedirectToAction("Index");
@@ -105,7 +105,7 @@ namespace SoftwareDesign.View.Controllers
          * The return should be Return View("Index")
          */
         // POST: MngPackage/Delete/5
-        [HttpPost]
+        //[HttpPost]
         //  public ActionResult Delete(int id)
         //{
             //try

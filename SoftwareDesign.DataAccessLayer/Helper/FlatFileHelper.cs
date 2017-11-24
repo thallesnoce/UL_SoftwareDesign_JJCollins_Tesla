@@ -122,27 +122,31 @@ namespace SoftwareDesign.Entities.Helper
         }
 
 
-        public void AddPackage(PackageEntity package) {
+        public void AddPackage(PackageEntity package)
+        {
             Data.Packages.Add(package);
         }
 
-        public void Remove(int id) {
+        public void Remove(int id)
+        {
             Data.Packages.RemoveAll(x => x.PackageId == id);
         }
 
-        public void Update(int id, string name, string description) {
+        public void Update(int id, string name, string description)
+        {
             var package = Data.Packages.FirstOrDefault(x => x.PackageId == id);
             package.Name = name;
             package.Description = description;
         }
-        
-    
 
-    public class FlatFile
-    {
-        public List<PackageEntity> Packages { get; set; }
-        public List<TransportEntity> Transports { get; set; }
-        public List<DestinationEntity> Destinations { get; set; }
-        public List<HotelEntity> Hoteis { get; set; }
+
+
+        public class FlatFile
+        {
+            public List<PackageEntity> Packages { get; set; }
+            public List<TransportEntity> Transports { get; set; }
+            public List<DestinationEntity> Destinations { get; set; }
+            public List<HotelEntity> Hoteis { get; set; }
+        }
     }
 }
