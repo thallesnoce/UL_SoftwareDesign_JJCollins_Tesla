@@ -76,22 +76,22 @@ namespace SoftwareDesign.ControllerLayer.Business
             //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().DetailsPackage(Name, PackageId, Description, Price, startDate, endDate);
         }
-        public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
-        {
-            //TODO: Use a design pattern to create an instance of Repository
-            //PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
-            return null;
-        }
-        public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
-        {
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;// new PackageDataAccess().EditPackage(Name, PackageId,Description);
-        }
-        public List<PackageEntity> DeletePackage(int PackageId)
-        {
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;// new PackageDataAccess().DeletePackage( PackageId);
-        }
+        //public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+        //{
+        //    //TODO: Use a design pattern to create an instance of Repository
+        //    //PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+        //    return null;
+        //}
+        //public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
+        //{
+        //    //TODO: Use a design pattern to create an instance of Repository
+        //    return null;// new PackageDataAccess().EditPackage(Name, PackageId,Description);
+        //}
+        //public List<PackageEntity> DeletePackage(int PackageId)
+        //{
+        //    //TODO: Use a design pattern to create an instance of Repository
+        //    return null;// new PackageDataAccess().DeletePackage( PackageId);
+        //}
 
 
 

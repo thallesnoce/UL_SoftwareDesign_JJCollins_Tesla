@@ -121,25 +121,22 @@ namespace SoftwareDesign.Entities.Helper
             File.WriteAllText(flatFileLocation, jsonString);
         }
 
-
-        public void AddPackage(PackageEntity package)
+        public static void AddPackage(PackageEntity package)
         {
             Data.Packages.Add(package);
         }
 
-        public void Remove(int id)
+        public static void RemovePackage(int id)
         {
             Data.Packages.RemoveAll(x => x.PackageId == id);
         }
 
-        public void Update(int id, string name, string description)
+        public static void UpdatePackage(int id, string name, string description)
         {
             var package = Data.Packages.FirstOrDefault(x => x.PackageId == id);
             package.Name = name;
             package.Description = description;
         }
-
-
 
         public class FlatFile
         {

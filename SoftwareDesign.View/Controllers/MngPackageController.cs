@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace SoftwareDesign.View.Controllers
 {
     public class MngPackageController : Controller
@@ -18,23 +19,17 @@ namespace SoftwareDesign.View.Controllers
         // GET: MngPackage
         public ActionResult Index()
         {
-            var business = new PackageBusinessLayer();
-            var packages = business.SearchPackage(0, 0, 0, new DateTime(), new DateTime()); //Create a method to list all
+            var managePackage = new ManagePackageBusinessLayer();
+            var packages = managePackage.ListPackage();
             return View(packages);
         }
 
-
         // GET: MngPackage/Details/5
-        public ActionResult Details()
+        public ActionResult Details(int packageId)
         {
-            /*
-             TN: Monica, Detail you need to receive an id and use the packageBusinessLayer to get the data from the flatfile.
-             */
-            //// monica and hang usecase implementation 11/11/2017
-            //var business1 = new PackageBusinessLayer();
-            //var packages1 = business1.DetailsPackage(Name, PackageId, Description, Price, startDate, endDate);
-            //return View(Package1);
-            return View();
+            var package = new PackageBusinessLayer();
+            package.ViewPackage(packageId);
+            return View(package);
         }
 
         // GET: MngPackage/Create
@@ -50,25 +45,21 @@ namespace SoftwareDesign.View.Controllers
              */
         // POST: MngPackage/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(string Name, int PackageId, string Description, int Price, DateTime startDate, DateTime endDate)
         {
-            //try
-            //{ //Insert Logic
-            //    var business2 = new PackageBusinessLayer();
-            //    var packages2 = business2.InsertPackage(Name, PackageId, Description, Price, startDate, endDate);
-            //    return View(packages2);
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
-            return View();
+            var managePackage = new ManagePackageBusinessLayer();
+            managePackage.AddPackage(Name, PackageId, Description, Price, startDate, endDate);
+            return View("Index");
         }
 
         // GET: MngPackage/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string Name, int PackageId, string Description, int Price, DateTime startDate, DateTime endDate)
         {
-            return View();
+            var managePackage = new ManagePackageBusinessLayer();
+            managePackage.AddPackage(Name, PackageId, Description, Price, startDate, endDate);
+
+
+            return View("Index");
         }
         /*
          * The EditPackage in businesslayer should be void.
@@ -76,52 +67,20 @@ namespace SoftwareDesign.View.Controllers
          */
         // POST: MngPackage/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditPackage(int PackageId)
         {
-            //try
-            //{
-            //    // TODO: Add update logic here
-            //    var business3 = new PackageBusinessLayer();
-             // var package3 = business3.EditPackage(Name,packageId,Description);
-            //    return View(package3);
 
-            //   // return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
             return View();
         }
 
         // GET: MngPackage/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int packageId)
         {
-            return View();
+            var managePackage = new ManagePackageBusinessLayer();
+            managePackage.DeletePackage(packageId);
+
+            var packages = managePackage.ListPackage();
+            return View("Index", packages);
         }
-
-        /*
-         * The DeletePackage in businessLayer and DataAccessLayer should be void
-         * The return should be Return View("Index")
-         */
-        // POST: MngPackage/Delete/5
-        //[HttpPost]
-        //  public ActionResult Delete(int id)
-        //{
-            //try
-            //{
-            //    // TODO: Add delete logic here
-            //    var business4 = new PackageBusinessLayer();
-            //    var package4 = business4.DeletePackage(id);
-            //    return View(Package4);
-
-            //   // return RedirectToAction("Index");
-            //}
-            //catch
-            //{
-            //    return View();
-            //}
-           // return View();
-       // }
     }
 }

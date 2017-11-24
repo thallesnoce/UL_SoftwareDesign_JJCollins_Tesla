@@ -21,79 +21,72 @@ namespace SoftwareDesign.DataAccessLayer
             //SingletonDBContext.GetContext().Packages.ToList();
 
             var data = FlatFileHelper.ListAllPackages();
-            return data.Where(x =>
-                        (transportId <= 0 || x.Transport.TransportId == transportId)
-                        && (destinationId <= 0 || x.Destination.DestinationId == destinationId)
-                        && (hotelId <= 0 || x.Hotel.HotelId == hotelId)
-                        &&  x.StartDate >=startDate 
+            var a = data.Where(x =>
+                          (transportId <= 0 || x.Transport.TransportId == transportId)
+                          && (destinationId <= 0 || x.Destination.DestinationId == destinationId)
+                          && (hotelId <= 0 || x.Hotel.HotelId == hotelId)
+            //&&  x.StartDate >=startDate 
             //&& x.EndDate <= endDate
             )
             .Select(x => x)
             .ToList();
+            return a;
         }
 
-        //by monica and hang 11/11/2017
+        /// <summary>
+        /// by monica and hang 11/11/2017
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="PackageId"></param>
+        /// <param name="Description"></param>
+        /// <param name="Price"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
         public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
 
         {
             var data = FlatFileHelper.ListAllPackages();
             return data.Select(x => x).ToList();
-
-            //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();
         }
 
-        /*
-         TN: I've created the method in the flatfile EditPackage
-         No return needed also. should be void.
-         */
-        public void InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+        public PackageEntity AddPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
-
+            PackageEntity obj = new PackageEntity();
+            obj.Name = Name;
+            obj.PackageId = PackageId;
+            obj.Description = Description;
+            obj.Price = Price;
+            obj.StartDate = startDate;
+            obj.EndDate = endDate;
             
-            //PackageStore a= new PackageStore(Name,PackageId,Description,Price,startDate,endDate);
-            //var data = FlatFileHelper.AddPackage(a);
-            
-            //return RedirectToAction("Index");
-            //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();
+            FlatFileHelper.AddPackage(obj);
+            return null;
         }
 
-        /*TN: should be void
-         * No return needed 
-         
-            I've created the method in the flatfile EditPackage
-             */
-        public void EditPackage(String Name, int PackageId, String Description)
+        public PackageEntity EditPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
-            //FlatFileHelper.Update(Name, PackageId,Description);
+            PackageEntity obj = new PackageEntity();
 
-            // Thalles please help here.
-            //return RedirectToAction("Index");
-            //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();   
+            obj.Name = Name;
+            obj.PackageId = PackageId;
+            obj.Description = Description;
+            obj.Price = Price;
+            obj.StartDate = startDate;
+            obj.EndDate = endDate;
+
+            FlatFileHelper.AddPackage(obj);
+            return null;
         }
 
-        /*TN: should be void (no return needed)
-         
-         I've created the method in the flatfile DeletePackage
-
-            usage: FlatFile.Delete(PackageId);
-             */
-        public void DeletePackage(int PackageId)
+        public void DeletePackage(int packageId)
         {
-            // FlatFileHelper.Remove(PackageId);
-            //return data.Where(x=>x.PackageId==PackageId);
-            //thalles pls help here.
-            //return RedirectToAction("Index");
-            //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();
+            FlatFileHelper.RemovePackage(packageId);
         }
-
 
         public List<PackageEntity> ListPackage()
         {
-            throw new NotImplementedException();
+            return FlatFileHelper.ListAllPackages();
         }
 
         public PackageEntity GetPackage(int packageId)
@@ -101,25 +94,5 @@ namespace SoftwareDesign.DataAccessLayer
             var data = FlatFileHelper.ListAllPackages();
             return data.Where(x => x.PackageId == packageId).FirstOrDefault();
         }
-        public class PackageStore{
-            String Name1;
-            int PackageId1;
-            String Description1;
-            int Price1;
-            DateTime startDate1;
-            DateTime endDate1;
-            PackageStore(String Name,int PackageId,String Description,int Price,DateTime startDate,DateTime endDate)
-                {
-                Name1=Name;
-                PackageId1=PackageId;
-                Description1=Description;
-                Price1=Price;
-                startDate1=startDate;
-                endDate1=endDate;
-             }
-
-
-
-         }
     }
 }
