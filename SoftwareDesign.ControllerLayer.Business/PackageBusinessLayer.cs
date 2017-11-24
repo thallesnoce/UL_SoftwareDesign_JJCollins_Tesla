@@ -46,7 +46,8 @@ namespace SoftwareDesign.ControllerLayer.Business
 
             foreach (var serviceType in aditionalServices)
             {
-                package = PackageFactory.CreatePackageServiceInstance(package, serviceType);
+                var packageFactory = new ConcretePackageFactory();
+                //packageFactory.FactoryMethod
             }
 
             return package.GetPrice();
@@ -59,10 +60,8 @@ namespace SoftwareDesign.ControllerLayer.Business
 
             //TODO: Implement the Design Patter Interceptor here.
 
-            //var buyPackage = new BuyPackageBusinessLayer(price, cardNumber, expirationDate, cvc);
-            //buyPackage.
-
             var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
+
             return result;
         }
 
@@ -77,22 +76,22 @@ namespace SoftwareDesign.ControllerLayer.Business
             //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().DetailsPackage(Name, PackageId, Description, Price, startDate, endDate);
         }
-        public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
-        {
-            //TODO: Use a design pattern to create an instance of Repository
-            //PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
-            return null;
-        }
-        public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
-        {
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;// new PackageDataAccess().EditPackage(Name, PackageId,Description);
-        }
-        public List<PackageEntity> DeletePackage(int PackageId)
-        {
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;// new PackageDataAccess().DeletePackage( PackageId);
-        }
+        //public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+        //{
+        //    //TODO: Use a design pattern to create an instance of Repository
+        //    //PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+        //    return null;
+        //}
+        //public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
+        //{
+        //    //TODO: Use a design pattern to create an instance of Repository
+        //    return null;// new PackageDataAccess().EditPackage(Name, PackageId,Description);
+        //}
+        //public List<PackageEntity> DeletePackage(int PackageId)
+        //{
+        //    //TODO: Use a design pattern to create an instance of Repository
+        //    return null;// new PackageDataAccess().DeletePackage( PackageId);
+        //}
 
 
 
