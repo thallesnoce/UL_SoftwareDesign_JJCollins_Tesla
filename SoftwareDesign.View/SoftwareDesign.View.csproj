@@ -162,6 +162,7 @@
     <Compile Include="Controllers\ManagePackageController.cs" />
     <Compile Include="Controllers\MngPackageController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,6 +258,7 @@
     <Content Include="Views\ManagePackage\ManagePackageView.cshtml" />
     <Content Include="Views\ManagePackage\CreatePackage.cshtml" />
     <Content Include="Views\MngPackage\Index.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App_Scripts\Package.ts" />

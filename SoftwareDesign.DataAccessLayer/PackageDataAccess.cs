@@ -32,6 +32,21 @@ namespace SoftwareDesign.DataAccessLayer
             .ToList();
         }
 
+        public List<ReportEntity> ListViewedPackges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReportEntity> ListViewedPackges(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReportEntity> ListPackage(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
         //by monica and hang 11/11/2017
         public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
 
@@ -96,6 +111,29 @@ namespace SoftwareDesign.DataAccessLayer
         {
             var data = FlatFileHelper.ListAllPackages();
             return data.Where(x => x.PackageId == packageId).FirstOrDefault();
+
         }
+
+        /// <summary>
+        /// The observer will call this method.
+        /// </summary>
+        /// <param name="packageid"></param>
+        public void IncrementView(int packageid) {
+            //get the package 
+            var package = GetPackage(packageid);
+            //increment
+            FlatFileHelper.IncrementPackageView(package);
+        }
+        //create a method here a method and call the method in the flatfile
+        //increase 
+
+
+        //Create new page in the view project
+        //that page will show all packages and the total views for each
+
+        //create a new business class in the business project
+        //Create a method to get the list of viewedpakcage ******
+        //using the method created in the flatfle
+
     }
 }

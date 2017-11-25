@@ -107,7 +107,7 @@ namespace SoftwareDesign.View.Controllers
         // POST: MngPackage/Delete/5
         [HttpPost]
         //  public ActionResult Delete(int id)
-        {
+        //{
             //try
             //{
             //    // TODO: Add delete logic here
