@@ -7,15 +7,14 @@ using System.Web.Mvc;
 
 namespace SoftwareDesign.View.Controllers
 {
-    public class ManagePackageController : Controller
+    public class ManagPController : Controller
     {
-        // GET: ManagePackage
-        public ActionResult Index(int packageId)
+        public ActionResult Index()
         {
-            var package = new ManagePackageBusinessLayer();
-            return View(package);
+            return View();
+            
+            
+            
         }
-
-
     }
 }

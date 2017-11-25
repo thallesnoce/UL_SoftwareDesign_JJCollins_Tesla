@@ -27,7 +27,10 @@ namespace SoftwareDesign.View.Controllers
 
             var packageList = new List<PackageEntity>();
             PackageBusinessLayer businessLayer = new PackageBusinessLayer();
-            packageList = businessLayer.SearchPackage(TransportId ?? 0, DestinationId ?? 0, HotelId ?? 0, new DateTime(), new DateTime());
+            var startDateaux = DateTime.Parse(StartDate);
+            var endDateaux = DateTime.Parse(EndDate);
+
+            packageList = businessLayer.SearchPackage(TransportId ?? 0, DestinationId ?? 0, HotelId ?? 0, startDateaux, endDateaux);
 
             return View(packageList);
         }
@@ -35,7 +38,7 @@ namespace SoftwareDesign.View.Controllers
         [HttpGet]
         public ActionResult CalculatePrice(int packageId, string additionalServices)
         {
-            var package = new PackageBusinessLayer();
+            var package = new BuyPackageBusinessLayer();
             var additionalServicesAux = additionalServices.Split(',').Select(x => Convert.ToInt32(x)).ToList();
             var price = package.CalculatePrice(packageId, additionalServicesAux);
             var packagePrice = new PackageEntity() { Price = price };

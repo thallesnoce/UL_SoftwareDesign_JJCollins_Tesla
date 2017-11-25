@@ -15,6 +15,7 @@ namespace SoftwareDesign.Entities
     /// <summary>
     /// Component class
     /// </summary>
+    /// isnt the interface supposed to also have both getter and setter methods?
     public interface IPackage
     {
         int PackageId { get; set; }
@@ -31,7 +32,7 @@ namespace SoftwareDesign.Entities
     /// </summary>
     public class PackageEntity : IPackage
     {
-        public int PackageId { get; set; }
+        public int PackageId { get; set; }  
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
@@ -79,7 +80,7 @@ namespace SoftwareDesign.Entities
     /// </summary>
     public class HoneyMoonPackage : PackageServices
     {
-        private decimal honeyMoonAddicionalPrice = 800.50M;
+        private decimal honeyMoonAdditionalPrice = 800.50M;
 
         public HoneyMoonPackage(IPackage package) : base(package)
         {
@@ -87,7 +88,7 @@ namespace SoftwareDesign.Entities
 
         public override decimal GetPrice()
         {
-            return base.GetPrice() + honeyMoonAddicionalPrice;
+            return base.GetPrice() + honeyMoonAdditionalPrice;
         }
     }
 
@@ -98,7 +99,7 @@ namespace SoftwareDesign.Entities
     /// </summary>
     public class BachelorPartyPackage : PackageServices
     {
-        private decimal bachelorAddicionalPrice = 1050.00M;
+        private decimal bachelorAdditionalPrice = 1050.00M;
 
         public BachelorPartyPackage(IPackage package) : base(package)
         {
@@ -106,7 +107,7 @@ namespace SoftwareDesign.Entities
 
         public override decimal GetPrice()
         {
-            return base.GetPrice() + bachelorAddicionalPrice;
+            return base.GetPrice() + bachelorAdditionalPrice;
         }
     }
 
@@ -117,7 +118,7 @@ namespace SoftwareDesign.Entities
     /// </summary>
     public class BirthDayPartyPackage : PackageServices
     {
-        private decimal birthDayAddicionalPrice = 100M;
+        private decimal birthDayAdditionalPrice = 100M;
 
         public BirthDayPartyPackage(IPackage package) : base(package)
         {
@@ -125,7 +126,7 @@ namespace SoftwareDesign.Entities
 
         public override decimal GetPrice()
         {
-            return base.GetPrice() + birthDayAddicionalPrice;
+            return base.GetPrice() + birthDayAdditionalPrice;
         }
     }
 }
