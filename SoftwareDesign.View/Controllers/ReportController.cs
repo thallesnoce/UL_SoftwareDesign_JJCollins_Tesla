@@ -14,8 +14,8 @@ namespace SoftwareDesign.View.Controllers
         // GET: Report
         public ActionResult Index()
         {
-            //1- Create a business class in the business SoftwareDesign.ControllerLayer.Business
-            //2- Create a method in that class that returns a list of reportentity(List<ReportEntity>)
+            //1- Created: a business class in the business SoftwareDesign.ControllerLayer.Business
+            //2- Created: a method in that class that returns a list of reportentity(List<ReportEntity>)
 
             //That new class should call the DataAccessLayer
             //follow the search package example. 

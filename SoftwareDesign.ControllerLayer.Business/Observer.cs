@@ -8,6 +8,6 @@ namespace SoftwareDesign.ControllerLayer.Business
 {
     public interface Observer
     {
-         void updateState(int state); // for packageId
+         void updateState(int state); // for packageid, but also need Show package name to user in the ReportView.
     }
 }

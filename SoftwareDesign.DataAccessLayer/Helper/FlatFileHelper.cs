@@ -31,7 +31,7 @@ namespace SoftwareDesign.Entities.Helper
             ViewedPackages = new Dictionary<PackageEntity, int>();
 
 
-            //First parameter is the package id  
+            //First parameter is the packageEntity
             //the second parameter is the number of times the package was viewed
         }
 

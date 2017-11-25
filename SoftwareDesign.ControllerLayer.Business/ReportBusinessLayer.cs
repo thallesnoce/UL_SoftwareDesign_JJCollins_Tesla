@@ -11,7 +11,6 @@ namespace SoftwareDesign.ControllerLayer.Business
     class ReportBusinessLayer
     {
         //method that returns a list of reportentity(List<ReportEntity>)
-     
         public List<ReportEntity> ListViewedPackges()
         {
 
