@@ -15,84 +15,129 @@ namespace SoftwareDesign.DataAccessLayer
     /// </summary>
     public class PackageDataAccess
     {
+        FlatFileHelper context;
+        public PackageDataAccess()
+        {
+            context = SingletonDBContext.GetContext();
+        }
+
         public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
         {
-            //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();
-
-            var data = FlatFileHelper.ListAllPackages();
-            var a = data.Where(x =>
-                          (transportId <= 0 || x.Transport.TransportId == transportId)
-                          && (destinationId <= 0 || x.Destination.DestinationId == destinationId)
-                          && (hotelId <= 0 || x.Hotel.HotelId == hotelId)
+            var data = context.ListAllPackages();
+            return data.Where(x =>
+                        (transportId <= 0 || x.Transport.TransportId == transportId)
+                        && (destinationId <= 0 || x.Destination.DestinationId == destinationId)
+                        && (hotelId <= 0 || x.Hotel.HotelId == hotelId)
             //&&  x.StartDate >=startDate 
             //&& x.EndDate <= endDate
             )
             .Select(x => x)
             .ToList();
-            return a;
         }
 
-        /// <summary>
-        /// by monica and hang 11/11/2017
-        /// </summary>
-        /// <param name="Name"></param>
-        /// <param name="PackageId"></param>
-        /// <param name="Description"></param>
-        /// <param name="Price"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <returns></returns>
+        //public List<ReportEntity> ListViewedPackges()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public List<ReportEntity> ListViewedPackges(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public List<ReportEntity> ListPackage(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //by monica and hang 11/11/2017
         public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
 
-        {
-            var data = FlatFileHelper.ListAllPackages();
+        {            
+            var data = context.ListAllPackages();
             return data.Select(x => x).ToList();
+
+            //Getting the DBContext through a singleton design pattern
+            //SingletonDBContext.GetContext().Packages.ToList();
         }
 
-        public PackageEntity AddPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+        /*
+         TN: I've created the method in the flatfile EditPackage
+         No return needed also. should be void.
+         */
+        public PackageEntity InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
-            PackageEntity obj = new PackageEntity();
-            obj.Name = Name;
-            obj.PackageId = PackageId;
-            obj.Description = Description;
-            obj.Price = Price;
-            obj.StartDate = startDate;
-            obj.EndDate = endDate;
-            
-            FlatFileHelper.AddPackage(obj);
-            return null;
+            var data = context.ListAllPackages();
+            return data.First();
+            //return RedirectToAction("Index");
+            //Getting the DBContext through a singleton design pattern
+            //SingletonDBContext.GetContext().Packages.ToList();
         }
 
-        public PackageEntity EditPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+        /*TN: should be void
+         * No return needed 
+         
+            I've created the method in the flatfile EditPackage
+             */
+        public void EditPackage(String Name, int PackageId, String Description)
         {
-            PackageEntity obj = new PackageEntity();
-
-            obj.Name = Name;
-            obj.PackageId = PackageId;
-            obj.Description = Description;
-            obj.Price = Price;
-            obj.StartDate = startDate;
-            obj.EndDate = endDate;
-
-            FlatFileHelper.AddPackage(obj);
-            return null;
+            var data = context.ListAllPackages();
+            // Thalles please help here.
+            //return RedirectToAction("Index");
+            //Getting the DBContext through a singleton design pattern
+            //SingletonDBContext.GetContext().Packages.ToList();   
         }
 
-        public void DeletePackage(int packageId)
+        /*TN: should be void (no return needed)
+         
+         I've created the method in the flatfile DeletePackage
+
+            usage: FlatFile.Delete(PackageId);
+             */
+        public void DeletePackage(int PackageId)
         {
-            FlatFileHelper.RemovePackage(packageId);
+            var data = context.ListAllPackages();
+            //return data.Where(x=>x.PackageId==PackageId);
+            //thalles pls help here.
+            //return RedirectToAction("Index");
+            //Getting the DBContext through a singleton design pattern
+            //SingletonDBContext.GetContext().Packages.ToList();
         }
+
 
         public List<PackageEntity> ListPackage()
         {
-            return FlatFileHelper.ListAllPackages();
+            throw new NotImplementedException();
         }
 
         public PackageEntity GetPackage(int packageId)
         {
-            var data = FlatFileHelper.ListAllPackages();
+            var data = context.ListAllPackages();
             return data.Where(x => x.PackageId == packageId).FirstOrDefault();
+
         }
+
+        /// <summary>
+        /// The observer will call this method.
+        /// </summary>
+        /// <param name="packageid"></param>
+        public void IncrementView(int packageid)
+        {
+            //get the package 
+            var package = GetPackage(packageid);
+            //increment
+            context.IncrementPackageView(package);
+        }
+        //create a method here a method and call the method in the flatfile
+        //increase 
+
+
+        //Create new page in the view project
+        //that page will show all packages and the total views for each
+
+        //create a new business class in the business project
+        //Create a method to get the list of viewedpakcage ******
+        //using the method created in the flatfle
+
     }
 }

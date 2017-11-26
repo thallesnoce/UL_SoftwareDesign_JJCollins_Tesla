@@ -12,8 +12,11 @@ namespace SoftwareDesign.ControllerLayer.Business
     {
         public void updateState(int state)
         {
-            //please add a reminder / alert here
-            //Console.writeline("you are viewing the package"+state);
+
+            //Need a method to call IncrementPackageView in faltfile
+
+            //please add a reminder / alert here to show the effect in View Layer.
+           
         }
 
 

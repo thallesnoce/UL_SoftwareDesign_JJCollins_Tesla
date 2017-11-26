@@ -12,15 +12,21 @@ namespace SoftwareDesign.DataAccessLayer
     /// </summary>
     public class DestinationDataAccess
     {
+        FlatFileHelper context;
+        public DestinationDataAccess()
+        {
+            context = SingletonDBContext.GetContext();
+        }
+
         public List<DestinationEntity> ListDestinations()
         {
-            var data = FlatFileHelper.ListAllDestinations();
+            var data = context.ListAllDestinations();
             return data.Select(x => x).ToList();
         }
 
         public DestinationEntity GetDestination(int id)
         {
-            var data = FlatFileHelper.ListAllDestinations();
+            var data = context.ListAllDestinations();
             return data.Where(x => x.DestinationId == id).FirstOrDefault();
         }
     }

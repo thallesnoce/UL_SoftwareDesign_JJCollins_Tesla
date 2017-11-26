@@ -14,17 +14,16 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
             //TODO: Use a design pattern to create an instance of Repository
             PackageDataAccess obj = new PackageDataAccess();
-            obj.AddPackage(Name, PackageId, Description, Price, startDate, endDate);
+            obj.InsertPackage(Name, PackageId, Description, Price, startDate, endDate);
             return null;//new PackageDataAccess().InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
         }
 
         public List<PackageEntity> EditPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             PackageDataAccess obj = new PackageDataAccess();
-            obj.EditPackage(Name, PackageId, Description, Price, startDate, endDate);
+            obj.EditPackage(Name, PackageId, Description);
             return null;// new PackageDataAccess().EditPackage(PackageId);
         }
-
 
         public List<PackageEntity> DeletePackage(int PackageId)
         {

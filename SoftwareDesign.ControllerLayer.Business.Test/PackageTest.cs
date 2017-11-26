@@ -39,8 +39,8 @@ namespace SoftwareDesign.ControllerLayer.Business.Test
 
             var aditionalServices = new List<int>() { (int)ServiceType.BachelorPartyHoliday, (int)ServiceType.BirthDayParty };
 
-            var package = new PackageBusinessLayer();
-            var price = package.CalculatePrice(packageId, aditionalServices);            
+            var package = new BuyPackageBusinessLayer();
+            var price = package.CalculatePrice(packageId, aditionalServices);
 
             Assert.IsTrue(price == 1650M);
         }
@@ -65,8 +65,8 @@ namespace SoftwareDesign.ControllerLayer.Business.Test
 
             var aditionalServices = new List<int>() { (int)ServiceType.BachelorPartyHoliday, (int)ServiceType.HonneyMoon };
 
-            var package = new PackageBusinessLayer();
-            var price = package.CalculatePrice(packageId, aditionalServices);            
+            var package = new BuyPackageBusinessLayer();
+            var price = package.CalculatePrice(packageId, aditionalServices);
 
             //Assertin with a wrong value.
             Assert.IsFalse(price == 1650M);

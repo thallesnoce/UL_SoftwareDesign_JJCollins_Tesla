@@ -12,15 +12,21 @@ namespace SoftwareDesign.DataAccessLayer
     /// </summary>
     public class TransportDataAccess
     {
+        FlatFileHelper context;
+        public TransportDataAccess()
+        {
+            context = SingletonDBContext.GetContext();
+        }
+
         public List<TransportEntity> ListTransports()
         {
-            var data = FlatFileHelper.ListAllTransports();
+            var data = context.ListAllTransports();
             return data.Select(x => x).ToList();
         }
 
         public TransportEntity GetTransport(int id)
         {
-            var data = FlatFileHelper.ListAllTransports();
+            var data = context.ListAllTransports();
             return data.Where(x => x.TransportId == id).FirstOrDefault();
         }
     }

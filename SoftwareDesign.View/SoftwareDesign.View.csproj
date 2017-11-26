@@ -161,6 +161,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MngPackageController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,13 +254,10 @@
     <Content Include="Views\Package\_confirmPayment.cshtml" />
     <Content Include="Views\Package\_calculatePrice.cshtml" />
     <Content Include="Views\Enquire\Index.cshtml" />
+    <Content Include="Views\ManagePackage\ManagePackageView.cshtml" />
+    <Content Include="Views\ManagePackage\CreatePackage.cshtml" />
     <Content Include="Views\MngPackage\Index.cshtml" />
-    <Content Include="Views\MngPackage\Create.cshtml" />
-    <Content Include="Views\MngPackage\Delete.cshtml" />
-    <Content Include="Views\MngPackage\DeletePackage.cshtml" />
-    <Content Include="Views\MngPackage\demo.cshtml" />
-    <Content Include="Views\MngPackage\Details.cshtml" />
-    <Content Include="Views\MngPackage\EditPackage.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App_Scripts\Package.ts" />

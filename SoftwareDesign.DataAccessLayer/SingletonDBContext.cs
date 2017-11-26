@@ -9,19 +9,21 @@ using System.Linq;
 namespace SoftwareDesign.DataAccessLayer
 {
     /// <summary>
-    /// Put the description of singleton here.
+    /// In the entity framework its easy to change from one database to another.
+    /// If you do not have specific TSQL statement, you can just change the ConnectionString and make sure that the driver is installed.
     /// </summary>
     public static class SingletonDBContext
     {
-        //Create a static method for the context of type DataModelContainer
+        private static FlatFileHelper _context;
 
+        public static FlatFileHelper GetContext()
+        {
+            if (_context == null)
+            {
+                _context = new FlatFileHelper();
+            }
 
-        //Create a static method "GetContext"
-        //Check if the property equals null
-        //If equal null, create a new instace of DataModelContainer and atribute it to the propert
-        //return the property. 
-
-
-        //Check the use of this property in the PackageDataAccess
+            return _context;
+        }
     }
 }

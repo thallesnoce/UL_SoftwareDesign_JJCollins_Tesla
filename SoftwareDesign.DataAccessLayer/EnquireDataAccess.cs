@@ -1,4 +1,5 @@
 ﻿using SoftwareDesign.Entities;
+using SoftwareDesign.Entities.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,12 @@ namespace SoftwareDesign.DataAccessLayer
     /// </summary>
     public class EnquireDataAccess
     {
+        FlatFileHelper context;
+        public EnquireDataAccess()
+        {
+            context = SingletonDBContext.GetContext();
+        }
+
         public EnquireEntity GetEnquire(EnquireEntity enquire)
         {
             throw new NotImplementedException();
@@ -24,11 +31,11 @@ namespace SoftwareDesign.DataAccessLayer
         }
 
         public void CreateEnquire(int packageId,String Message)
-        {   
+        {
             // Data is  going to be saved in flatFile
-            //var data = FlatFileHelper.ListAllPackages();
+            //var data = context.ListAllPackages();
             //return data.Where(x => x.PackageId == packageId).FirstOrDefault();
-           //
+            //
         }
     }
  }

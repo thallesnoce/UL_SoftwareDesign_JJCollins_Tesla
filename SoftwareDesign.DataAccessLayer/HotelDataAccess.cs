@@ -12,15 +12,21 @@ namespace SoftwareDesign.DataAccessLayer
     /// </summary>
     public class HotelDataAccess
     {
+        FlatFileHelper context;
+        public HotelDataAccess()
+        {
+            context = SingletonDBContext.GetContext();
+        }
+
         public List<HotelEntity> ListHoteis()
         {
-            var data = FlatFileHelper.ListAllHoteis();
+            var data = context.ListAllHoteis();
             return data.Select(x => x).ToList();
         }
 
         public HotelEntity GetHotel(int id)
         {
-            var data = FlatFileHelper.ListAllHoteis();
+            var data = context.ListAllHoteis();
             return data.Where(x => x.HotelId == id).FirstOrDefault();
         }
     }

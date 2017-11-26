@@ -112,7 +112,7 @@ namespace SoftwareDesign.ControllerLayer.Business
 
         public void display()
         {
-            //System.out.println("Your Enquire submission is done");
+            //("Your Enquire submission is done");
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SoftwareDesign.Entities.ReportEntity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Report</h2>
+
+<p>
+    Total of views per package
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PackageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalViews)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalViews)
+            </td>
+        </tr>
+    }
+
+</table>

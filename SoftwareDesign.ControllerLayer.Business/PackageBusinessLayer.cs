@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace SoftwareDesign.ControllerLayer.Business
 {
-    public class PackageBusinessLayer  //Subject
+    public class PackageBusinessLayer  //Subject: Package is being observed by interface Observer
     {
         private ArrayList observers;
         private int state;
@@ -21,11 +21,11 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
             observers = new ArrayList();
         }
-        public void registerObserver(Observer o)
+        public void registerObserver(Observer o) // Attach 
         {
             observers.Add(o);
         }
-        public void removeObserver(Observer o)
+        public void removeObserver(Observer o) // Detach
         {
             int i = observers.IndexOf(o);
             if (i>=0)
@@ -33,7 +33,7 @@ namespace SoftwareDesign.ControllerLayer.Business
                 observers.Remove(i);
             }
         }
-        public void notifyAllObservers()
+        public void notifyAllObservers() // Update
         {
             foreach (Observer observer in observers)
             {
@@ -44,10 +44,9 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
             IPackage package = new PackageDataAccess().GetPackage(packageId);
 
-            foreach (var serviceType in aditionalServices)
+            foreach (var item in aditionalServices)
             {
-                var packageFactory = new ConcretePackageFactory();
-                //packageFactory.FactoryMethod
+                //PackageFactory.CreatePackageServiceInstace(package, item);
             }
 
             return package.GetPrice();
@@ -76,22 +75,21 @@ namespace SoftwareDesign.ControllerLayer.Business
             //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().DetailsPackage(Name, PackageId, Description, Price, startDate, endDate);
         }
-        //public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
-        //{
-        //    //TODO: Use a design pattern to create an instance of Repository
-        //    //PackageDataAccess.InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
-        //    return null;
-        //}
-        //public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
-        //{
-        //    //TODO: Use a design pattern to create an instance of Repository
-        //    return null;// new PackageDataAccess().EditPackage(Name, PackageId,Description);
-        //}
-        //public List<PackageEntity> DeletePackage(int PackageId)
-        //{
-        //    //TODO: Use a design pattern to create an instance of Repository
-        //    return null;// new PackageDataAccess().DeletePackage( PackageId);
-        //}
+        public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return null;//new PackageDataAccess().InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+        }
+        public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return null;// new PackageDataAccess().EditPackage(Name, PackageId,Description);
+        }
+        public List<PackageEntity> DeletePackage(int PackageId)
+        {
+            //TODO: Use a design pattern to create an instance of Repository
+            return null;// new PackageDataAccess().DeletePackage( PackageId);
+        }
 
 
 
