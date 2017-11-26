@@ -14,6 +14,21 @@ namespace SoftwareDesign.DataAccessLayer
     public static class SingletonDBContext
     {
         //Create a static method for the context of type DataModelContainer
+          private static Lazy<SingletonDbContext>  instance = new Lazy<SingletonDbContext>(()
+    => new SingletonDbContext());
+      
+
+        
+public static SingletonDbContext instance
+{
+    get
+    {
+        if (instance==null)
+    { instance=new SingletonDbContext(); }
+   return instance;
+    }
+}
+}        
 
 
         //Create a static method "GetContext"

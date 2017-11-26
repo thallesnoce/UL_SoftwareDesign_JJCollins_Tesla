@@ -18,7 +18,7 @@ namespace SoftwareDesign.DataAccessLayer
         public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
         {
             //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();
+            SingletonDBContext.Packages.ToList();
 
             var data = FlatFileHelper.ListAllPackages();
             return data.Where(x =>
