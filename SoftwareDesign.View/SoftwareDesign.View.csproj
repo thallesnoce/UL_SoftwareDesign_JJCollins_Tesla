@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EnquireController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagePackageController.cs" />
     <Compile Include="Controllers\MngPackageController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\ReportController.cs" />

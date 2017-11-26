@@ -11,14 +11,14 @@ namespace SoftwareDesign.ControllerLayer.Business
     class ReportBusinessLayer
     {
         //method that returns a list of reportentity(List<ReportEntity>)
-        //public List<ReportEntity> ListViewedPackges()
-        //{
+        public List<ReportEntity> ListViewedPackges()
+        {
 
-        //    //TODO: Use a design pattern to create an instance of Repository
-        //    return new PackageDataAccess().ListViewedPackges();
+            //TODO: Use a design pattern to create an instance of Repository
+            return new PackageDataAccess().ListViewedPackges();
 
-        //}
-
+        }
+       
     }
 }
 
