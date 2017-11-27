@@ -1,9 +1,11 @@
-﻿using SoftwareDesign.Entities;
+﻿using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace SoftwareDesign.View.Controllers
 {
@@ -24,16 +26,14 @@ namespace SoftwareDesign.View.Controllers
 
             //delete these two lines later. after you finish create the steps before
             //replace the fake list with the true return.
-            var fakelist = new List<ReportEntity>();
-            fakelist.Add(new ReportEntity() { PackageName = "packaage", TotalViews = 10 });
-            fakelist.Add(new ReportEntity() { PackageName = "packaage 2", TotalViews = 2 });
 
-            //List is the paramenter to show in the page
-            return View(fakelist);
-        }
-
-        // GET: Report/Details/5
-        public ActionResult Details(int id)
+            var ReportPackage = new ReportBusinessLayer();
+            var PackageList = ReportPackage.ListViewedPackges();
+            return View(PackageList);
+        }  
+        
+            // GET: Report/Details/5
+            public ActionResult Details(int id)
         {
             return View();
         }
