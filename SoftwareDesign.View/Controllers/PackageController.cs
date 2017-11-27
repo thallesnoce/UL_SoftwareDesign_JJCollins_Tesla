@@ -27,10 +27,10 @@ namespace SoftwareDesign.View.Controllers
 
             var packageList = new List<PackageEntity>();
             PackageBusinessLayer businessLayer = new PackageBusinessLayer();
-            var startDateaux = DateTime.Parse(StartDate);
-            var endDateaux = DateTime.Parse(EndDate);
+            //var startDateaux = DateTime.Parse(StartDate);
+            //var endDateaux = DateTime.Parse(EndDate);
 
-            packageList = businessLayer.SearchPackage(TransportId ?? 0, DestinationId ?? 0, HotelId ?? 0, startDateaux, endDateaux);
+            packageList = businessLayer.SearchPackage(TransportId ?? 0, DestinationId ?? 0, HotelId ?? 0, new DateTime(), new DateTime());
 
             return View(packageList);
         }

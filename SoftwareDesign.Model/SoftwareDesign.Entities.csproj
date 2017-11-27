@@ -44,11 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientEntity.cs" />
+    <Compile Include="ConcretePackageFactory.cs" />
     <Compile Include="DestinationEntity.cs" />
     <Compile Include="EnquireEntity.cs" />
     <Compile Include="HotelEntity.cs" />
     <Compile Include="PackageEntity.cs" />
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="PackageFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportEntity.cs" />
     <Compile Include="TransportEntity.cs" />

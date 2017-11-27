@@ -159,7 +159,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EnquireController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManagePackageController.cs" />
     <Compile Include="Controllers\MngPackageController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -259,6 +258,12 @@
     <Content Include="Views\ManagePackage\CreatePackage.cshtml" />
     <Content Include="Views\MngPackage\Index.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\MngPackage\Create.cshtml" />
+    <Content Include="Views\MngPackage\Delete.cshtml" />
+    <Content Include="Views\MngPackage\DeletePackage.cshtml" />
+    <Content Include="Views\MngPackage\demo.cshtml" />
+    <Content Include="Views\MngPackage\Details.cshtml" />
+    <Content Include="Views\MngPackage\EditPackage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="App_Scripts\Package.ts" />

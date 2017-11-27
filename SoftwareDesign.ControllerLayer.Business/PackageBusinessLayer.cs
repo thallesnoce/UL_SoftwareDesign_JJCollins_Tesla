@@ -15,24 +15,27 @@ namespace SoftwareDesign.ControllerLayer.Business
         private ArrayList observers;
         private int state;
 
-        public int State { get => state; set => state = value;  }
-        
+        public int State { get => state; set => state = value; }
+
         public PackageBusinessLayer()
         {
             observers = new ArrayList();
         }
+
         public void registerObserver(Observer o) // Attach 
         {
             observers.Add(o);
         }
+
         public void removeObserver(Observer o) // Detach
         {
             int i = observers.IndexOf(o);
-            if (i>=0)
+            if (i >= 0)
             {
                 observers.Remove(i);
             }
         }
+
         public void notifyAllObservers() // Update
         {
             foreach (Observer observer in observers)
@@ -40,13 +43,15 @@ namespace SoftwareDesign.ControllerLayer.Business
                 observer.updateState(state);
             }
         }
+
         public decimal CalculatePrice(int packageId, List<int> aditionalServices)
         {
             IPackage package = new PackageDataAccess().GetPackage(packageId);
+            var packageFactory = new ConcretePackageFactory();
 
             foreach (var item in aditionalServices)
             {
-                //PackageFactory.CreatePackageServiceInstace(package, item);
+                package = packageFactory.FactoryServiceMethod(package, item);
             }
 
             return package.GetPrice();
@@ -77,21 +82,24 @@ namespace SoftwareDesign.ControllerLayer.Business
         }
         public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;//new PackageDataAccess().InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+            var data = new PackageDataAccess();
+            data.InsertPackage(Name, PackageId, Description, Price, startDate, endDate);
+            return data.ListPackage();
         }
+
         public List<PackageEntity> EditPackage(String Name, int PackageId, String Description)
         {
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;// new PackageDataAccess().EditPackage(Name, PackageId,Description);
+            var data = new PackageDataAccess();
+            data.EditPackage(Name, PackageId, Description);
+            return data.ListPackage();
         }
+
         public List<PackageEntity> DeletePackage(int PackageId)
         {
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;// new PackageDataAccess().DeletePackage( PackageId);
+            var data = new PackageDataAccess();
+            data.DeletePackage(PackageId);
+            return data.ListPackage();
         }
-
-
 
         public PackageEntity GetPackage(int packageId)
         {

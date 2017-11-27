@@ -45,15 +45,10 @@ namespace SoftwareDesign.DataAccessLayer
         //    throw new NotImplementedException();
         //}
 
-        //public List<ReportEntity> ListPackage(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         //by monica and hang 11/11/2017
         public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
 
-        {            
+        {
             var data = context.ListAllPackages();
             return data.Select(x => x).ToList();
 
@@ -61,10 +56,6 @@ namespace SoftwareDesign.DataAccessLayer
             //SingletonDBContext.GetContext().Packages.ToList();
         }
 
-        /*
-         TN: I've created the method in the flatfile EditPackage
-         No return needed also. should be void.
-         */
         public PackageEntity InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             var data = context.ListAllPackages();
@@ -74,70 +65,42 @@ namespace SoftwareDesign.DataAccessLayer
             //SingletonDBContext.GetContext().Packages.ToList();
         }
 
-        /*TN: should be void
-         * No return needed 
-         
-            I've created the method in the flatfile EditPackage
-             */
         public void EditPackage(String Name, int PackageId, String Description)
         {
-            var data = context.ListAllPackages();
-            // Thalles please help here.
-            //return RedirectToAction("Index");
-            //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();   
+            context.UpdatePackage(PackageId, Name, Description);
         }
 
-        /*TN: should be void (no return needed)
-         
-         I've created the method in the flatfile DeletePackage
-
-            usage: FlatFile.Delete(PackageId);
-             */
-        public void DeletePackage(int PackageId)
+        public void DeletePackage(int packageId)
         {
-            var data = context.ListAllPackages();
-            //return data.Where(x=>x.PackageId==PackageId);
-            //thalles pls help here.
-            //return RedirectToAction("Index");
-            //Getting the DBContext through a singleton design pattern
-            //SingletonDBContext.GetContext().Packages.ToList();
+            context.RemovePackage(packageId);
         }
-
 
         public List<PackageEntity> ListPackage()
         {
-            throw new NotImplementedException();
+            return context.ListAllPackages();
         }
 
         public PackageEntity GetPackage(int packageId)
         {
             var data = context.ListAllPackages();
             return data.Where(x => x.PackageId == packageId).FirstOrDefault();
-
         }
 
         /// <summary>
         /// The observer will call this method.
         /// </summary>
         /// <param name="packageid"></param>
-        public void IncrementView(int packageid)
+        public void IncrementView(int packageId)
         {
             //get the package 
-            var package = GetPackage(packageid);
+            var package = GetPackage(packageId);
             //increment
             context.IncrementPackageView(package);
         }
-        //create a method here a method and call the method in the flatfile
-        //increase 
 
-
-        //Create new page in the view project
-        //that page will show all packages and the total views for each
-
-        //create a new business class in the business project
-        //Create a method to get the list of viewedpakcage ******
-        //using the method created in the flatfle
-
+        public List<ReportEntity> ListViewedPackges()
+        {
+            return context.ListViewedPackages();
+        }
     }
 }

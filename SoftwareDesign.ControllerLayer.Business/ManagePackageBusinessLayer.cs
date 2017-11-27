@@ -12,25 +12,23 @@ namespace SoftwareDesign.ControllerLayer.Business
     {
         public List<PackageEntity> AddPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
-            //TODO: Use a design pattern to create an instance of Repository
             PackageDataAccess obj = new PackageDataAccess();
             obj.InsertPackage(Name, PackageId, Description, Price, startDate, endDate);
-            return null;//new PackageDataAccess().InsertPackage(Name, PackageId, Description, Price, startDate,endDate);
+            return obj.ListPackage();
         }
 
         public List<PackageEntity> EditPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             PackageDataAccess obj = new PackageDataAccess();
             obj.EditPackage(Name, PackageId, Description);
-            return null;// new PackageDataAccess().EditPackage(PackageId);
+            return obj.ListPackage();
         }
 
         public List<PackageEntity> DeletePackage(int PackageId)
         {
             PackageDataAccess obj = new PackageDataAccess();
             obj.DeletePackage(PackageId);
-            //TODO: Use a design pattern to create an instance of Repository
-            return null;// new PackageDataAccess().DeletePackage( PackageId);
+            return obj.ListPackage();
         }
 
         public List<PackageEntity> ListPackage()
