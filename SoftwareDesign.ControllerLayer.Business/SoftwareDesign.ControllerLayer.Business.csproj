@@ -45,6 +45,14 @@
     <Compile Include="ConcreteObserver.cs" />
     <Compile Include="EnquireBusinessLayer.cs" />
     <Compile Include="EnquireObserver.cs" />
+    <Compile Include="Interceptor_Client\BuyPackageInterceptor.cs" />
+    <Compile Include="Interceptor\BuyPackageDispatcher.cs" />
+    <Compile Include="Interceptor\IClientRequestInterceptor.cs" />
+    <Compile Include="Interceptor\MarshaledRequest.cs" />
+    <Compile Include="Interceptor\IMarshaledRequest.cs" />
+    <Compile Include="Interceptor\UnmarshaledRequest.cs" />
+    <Compile Include="Interceptor\IUnmarshaledRequest.cs" />
+    <Compile Include="Interceptor_Client\MainClientClass.cs" />
     <Compile Include="ManagePackageBusinessLayer.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="ReportBusinessLayer.cs" />

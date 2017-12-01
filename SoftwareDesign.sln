@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.Entities", "SoftwareDesign.Model\SoftwareDesign.Entities.csproj", "{9F251EA9-A550-4362-9DA2-C58F1D8A6B4A}"
 EndProject
@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.ControllerLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.DataAccessLayer", "SoftwareDesign.DataAccessLayer\SoftwareDesign.DataAccessLayer.csproj", "{8D887D27-F20C-468F-B1D2-C0CB199D61CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.ThirdPartyCreditCard", "SoftwareDesign.ThirdPartyCreditCard.\SoftwareDesign.ThirdPartyCreditCard.csproj", "{39ABE39E-7FF3-4FE5-8816-B5056D26715A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.ThirdPartyCreditCard", "SoftwareDesign.ThirdPartyCreditCard\SoftwareDesign.ThirdPartyCreditCard.csproj", "{39ABE39E-7FF3-4FE5-8816-B5056D26715A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.ControllerLayer.API", "SoftwareDesign.ControllerLayer.API\SoftwareDesign.ControllerLayer.API.csproj", "{46AFFF65-ADBA-464E-9CE3-85E00E458DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{39ABE39E-7FF3-4FE5-8816-B5056D26715A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39ABE39E-7FF3-4FE5-8816-B5056D26715A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39ABE39E-7FF3-4FE5-8816-B5056D26715A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46AFFF65-ADBA-464E-9CE3-85E00E458DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46AFFF65-ADBA-464E-9CE3-85E00E458DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46AFFF65-ADBA-464E-9CE3-85E00E458DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46AFFF65-ADBA-464E-9CE3-85E00E458DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

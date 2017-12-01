@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5DB4A2D0-6A92-4F30-AF0D-8A91831DE8CA}</ProjectGuid>
+    <ProjectGuid>{46AFFF65-ADBA-464E-9CE3-85E00E458DC1}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -24,6 +24,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -175,7 +176,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SoftwareDesign.Model\SoftwareDesign.Entities.csproj">
       <Project>{9f251ea9-a550-4362-9da2-c58f1d8a6b4a}</Project>
-      <Name>SoftwareDesign.Model</Name>
+      <Name>SoftwareDesign.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -194,7 +195,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55891</DevelopmentServerPort>
+          <DevelopmentServerPort>50265</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:54155/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

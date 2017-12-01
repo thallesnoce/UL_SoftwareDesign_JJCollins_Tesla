@@ -1,4 +1,5 @@
-﻿using SoftwareDesign.DataAccessLayer;
+﻿using SoftwareDesign.ControllerLayer.Business.Interceptor;
+using SoftwareDesign.DataAccessLayer;
 using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,36 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
         }
 
-        public Tuple<Boolean, string> EffectivePackageBuy(decimal price, int cardOptions, string cardNumber, string expirationDate, string cvc)
+        public Tuple<Boolean, string> EffectivePackageBuy(decimal price, string cardNumber, string expirationDate, string cvc)
         {
-            var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
-            return result;
+            /*
+             * >>> Interceptor <<<
+             *  Here the framework triggers the PreMarshalRequest
+             */
+            var unmarshaledRequest = new UnmarshaledRequest();
+            unmarshaledRequest.setPackageId(500);
+            BuyPackageDispatcher.Instance.DispatchClientRequestInterceptorPreMarshal(unmarshaledRequest);
+
+            /**
+             * 
+             This will ensure that buy package will happen in a synchronous way
+             *
+             */
+            //TODO: Check this
+            lock (locker)
+            {
+                var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
+            }
+
+            /*
+             * >>> Interceptor <<<
+             *  Here the framework triggers the PostMarshalRequest
+             */
+            var marshaledRequest = new MarshaledRequest();
+            marshaledRequest.setPackageId(500);
+            BuyPackageDispatcher.Instance.DispatchClientRequestInterceptorPostMarshal(marshaledRequest);
+
+            return new Tuple<bool, string>(true, "");
         }
 
         public decimal CalculatePrice(int packageId, List<int> aditionalServices)
@@ -47,35 +74,27 @@ namespace SoftwareDesign.ControllerLayer.Business
         /// <returns></returns>
         private static Tuple<bool, string> CheckWithThirdPartCrediCard(decimal price, string cardNumber, string expirationDate, string cvc)
         {
-            /**
-             * 
-             This will ensure that buy package will happen in a synchronous way
-             *
-             */
-            lock (locker)
+            bool isSuccess = false;
+            string message = string.Empty;
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:58561/");
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.GetAsync($"CrediCard/PostRegisterBuy/{cardNumber}/{expirationDate}/{cvc}/{price}").Result;
+            if (response.IsSuccessStatusCode)
             {
-                bool isSuccess = false;
-                string message = string.Empty;
+                var transactionStatus = response.Content.ReadAsStringAsync().Result.Split('|');
 
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:58561/");
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync($"CrediCard/PostRegisterBuy/{cardNumber}/{expirationDate}/{cvc}/{price}").Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    var transactionStatus = response.Content.ReadAsStringAsync().Result.Split('|');
-
-                    isSuccess = Convert.ToBoolean(transactionStatus[0]);
-                    message = transactionStatus[1];
-                }
-                else
-                {
-                    isSuccess = false;
-                    message = "Error when trying to connect to the Credit Card Company.";
-                }
-
-                return new Tuple<bool, string>(isSuccess, message);
+                isSuccess = Convert.ToBoolean(transactionStatus[0]);
+                message = transactionStatus[1];
             }
+            else
+            {
+                isSuccess = false;
+                message = "Error when trying to connect to the Credit Card Company.";
+            }
+
+            return new Tuple<bool, string>(isSuccess, message);
         }
     }
 }

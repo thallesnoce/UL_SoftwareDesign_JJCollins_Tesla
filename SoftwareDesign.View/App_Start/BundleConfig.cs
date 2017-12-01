@@ -28,7 +28,8 @@ namespace SoftwareDesign.View
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/themes/base/jquery-ui.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css"
+                      ));
         }
     }
 }

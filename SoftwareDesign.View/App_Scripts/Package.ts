@@ -1,21 +1,31 @@
 ﻿module Package {
 
     export class BuyPackageController {
-
-        constructor() {
+        private selectedServices: string = "";
+        constructor(private packageId: Number) {
             this.bindCalculatePrice();
             this.bindBuyPackage();
+            this.bindServices();
+        }
+
+        bindServices() {
+            debugger;
+            $("js-btnAddService").click(() => {
+                debugger;
+                var selectService = $("js-serviceOption").val;
+                this.selectedServices = `${selectService}`;
+            });
         }
 
         bindCalculatePrice() {
             var url = '/Package/CalculatePrice';
 
-            $("#btnBuyPackage").click(() => {                
+            $("#js-btnBuyPackage").click(() => {
                 var $buttonClicked = $(this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };
                 var request = {
-                    packageId: 1,
+                    packageId: this.packageId,
                     additionalServices: "1,2"
                 };
 
@@ -36,7 +46,6 @@
             var url = '/Package/BuyPackage';
 
             $("#btnBuy").click(() => {
-                debugger;
                 var $buttonClicked = $(this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };

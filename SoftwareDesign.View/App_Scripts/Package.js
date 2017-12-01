@@ -1,19 +1,30 @@
 var Package;
 (function (Package) {
     var BuyPackageController = (function () {
-        function BuyPackageController() {
+        function BuyPackageController(packageId) {
+            this.packageId = packageId;
+            this.selectedServices = "";
             this.bindCalculatePrice();
             this.bindBuyPackage();
+            this.bindServices();
         }
+        BuyPackageController.prototype.bindServices = function () {
+            var _this = this;
+            $("js-btnAddService").click(function () {
+                debugger;
+                var selectService = $("js-serviceOption").val;
+                _this.selectedServices = "" + selectService;
+            });
+        };
         BuyPackageController.prototype.bindCalculatePrice = function () {
             var _this = this;
             var url = '/Package/CalculatePrice';
-            $("#btnBuyPackage").click(function () {
+            $("#js-btnBuyPackage").click(function () {
                 var $buttonClicked = $(_this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };
                 var request = {
-                    packageId: 1,
+                    packageId: _this.packageId,
                     additionalServices: "1,2"
                 };
                 $.get(url, request, function (data) {
@@ -31,7 +42,6 @@ var Package;
             var _this = this;
             var url = '/Package/BuyPackage';
             $("#btnBuy").click(function () {
-                debugger;
                 var $buttonClicked = $(_this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };
