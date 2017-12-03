@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,14 +18,14 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
         }
 
-        public Tuple<Boolean, string> EffectivePackageBuy(decimal price, string cardNumber, string expirationDate, string cvc)
+        public Tuple<Boolean, string> EffectivePackageBuy(int packageid, decimal price, string cardNumber, string expirationDate, string cvc)
         {
             /*
              * >>> Interceptor <<<
              *  Here the framework triggers the PreMarshalRequest
              */
             var unmarshaledRequest = new UnmarshaledRequest();
-            unmarshaledRequest.setPackageId(500);
+            unmarshaledRequest.setPackageId(packageid);
             BuyPackageDispatcher.Instance.DispatchClientRequestInterceptorPreMarshal(unmarshaledRequest);
 
             /**
@@ -35,6 +36,11 @@ namespace SoftwareDesign.ControllerLayer.Business
             //TODO: Check this
             lock (locker)
             {
+                var package = new PackageDataAccess().GetPackage(packageid);
+
+                var hotel = CheckWithThirdHotel(package.Hotel.HotelPartnerId);
+                var transport = CheckWithThirdTransport(package.Transport.TransportPartnerId);
+
                 var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
             }
 
@@ -43,7 +49,7 @@ namespace SoftwareDesign.ControllerLayer.Business
              *  Here the framework triggers the PostMarshalRequest
              */
             var marshaledRequest = new MarshaledRequest();
-            marshaledRequest.setPackageId(500);
+            marshaledRequest.setPackageId(packageid);
             BuyPackageDispatcher.Instance.DispatchClientRequestInterceptorPostMarshal(marshaledRequest);
 
             return new Tuple<bool, string>(true, "");
@@ -63,6 +69,26 @@ namespace SoftwareDesign.ControllerLayer.Business
         }
 
         /// <summary>
+        /// Simulate Hotel Parter
+        /// </summary>
+        /// <param name="hotelId"></param>
+        /// <returns></returns>
+        private static Tuple<bool, string> CheckWithThirdHotel(int hotelId)
+        {
+            return new Tuple<bool, string>(true, string.Empty);
+        }
+
+        /// <summary>
+        /// Simulate Transport Partner
+        /// </summary>
+        /// <param name="TransportId"></param>
+        /// <returns></returns>
+        private static Tuple<bool, string> CheckWithThirdTransport(int TransportId)
+        {
+            return new Tuple<bool, string>(true, string.Empty);
+        }
+
+        /// <summary>
         /// This Method Simulate a comunication with the Third Part Software. 
         /// In this case Credit Card Operator System.
         /// Was Created a API to fake this comunication.
@@ -79,14 +105,18 @@ namespace SoftwareDesign.ControllerLayer.Business
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://localhost:58561/");
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.GetAsync($"CrediCard/PostRegisterBuy/{cardNumber}/{expirationDate}/{cvc}/{price}").Result;
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync($"api/CreditCard/{cardNumber}/{cvc}/{price.ToString("F2").Replace(".", "")}").Result;
+
             if (response.IsSuccessStatusCode)
             {
                 var transactionStatus = response.Content.ReadAsStringAsync().Result.Split('|');
 
-                isSuccess = Convert.ToBoolean(transactionStatus[0]);
-                message = transactionStatus[1];
+                isSuccess = true;
+                message = "Transaction successfully completed";
             }
             else
             {

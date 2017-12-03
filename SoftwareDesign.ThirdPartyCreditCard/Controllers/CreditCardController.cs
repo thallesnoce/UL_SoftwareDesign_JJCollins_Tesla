@@ -4,28 +4,23 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Routing;
 
 namespace SoftwareDesign.ThirdPartyCreditCard.Controllers
 {
-    public class ValuesController : ApiController
+    public class CreditCardController : ApiController
     {
         // POST api/values
-        public string PostRegisterBuy([FromBody]string creditCardNumber, string experationDate, string cvc, decimal value)
+        public string Get(string creditCardNumber, string cvc, decimal value)
         {
             var transactionAccepted = true;
-            var message = string.Empty;
+            var message = "Transaction successfully completed";
             long creditCardNumberAux;
-            DateTime experationDateAux;
 
             if (!long.TryParse(creditCardNumber, out creditCardNumberAux))
             {
                 transactionAccepted = false;
                 message = "Credit Card Number Invalid";
-            }
-            else if (!DateTime.TryParse(experationDate, out experationDateAux))
-            {
-                transactionAccepted = false;
-                message = "Experation Date Invalid";
             }
             if (cvc.Length > 3)
             {

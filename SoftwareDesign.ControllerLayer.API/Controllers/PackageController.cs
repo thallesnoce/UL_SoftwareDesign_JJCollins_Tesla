@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftwareDesign.ControllerLayer.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +11,14 @@ namespace SoftwareDesign.ControllerLayer.API.Controllers
     //public class PackageController : ApiController
     public class PackageController
     {
+        [Route("api/Package/{packageId}/{clientId}/{price}/{cardOptions}/{cardNumber}/{expirationDate}/{cvc}")]
+        public Tuple<Boolean, string> BuyPackage(int packageId, int clientId, decimal price, int cardOptions, string cardNumber, string expirationDate, string cvc)
+        {
+            var buyPackage = new BuyPackageBusinessLayer();
+            var result = buyPackage.EffectivePackageBuy(packageId, price, cardNumber, expirationDate, cvc);
+            return result;
+        }
+
         //public void BuyPackage(int transportPartnerId, Destination destination, Hotel hotel)
         //{
         //    throw new NotImplementedException();

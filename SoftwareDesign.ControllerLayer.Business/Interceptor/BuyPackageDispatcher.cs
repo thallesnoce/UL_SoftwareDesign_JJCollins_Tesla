@@ -13,7 +13,7 @@ namespace SoftwareDesign.ControllerLayer.Business.Interceptor
     public class BuyPackageDispatcher
     {
         private static readonly object locker = new Object();
-        private static List<IClientRequestInterceptor> interceptors = new List<IClientRequestInterceptor>();
+        private static List<IClientRequestInterceptor> interceptors;
         private static BuyPackageDispatcher instance;
 
         private BuyPackageDispatcher()
@@ -27,6 +27,7 @@ namespace SoftwareDesign.ControllerLayer.Business.Interceptor
                 if (instance == null)
                 {
                     instance = new BuyPackageDispatcher();
+                    interceptors = new List<IClientRequestInterceptor>();
                 }
 
                 return instance;

@@ -60,7 +60,7 @@ namespace SoftwareDesign.ControllerLayer.Business
         public Tuple<Boolean, string> BuyPackage(int packageId, int clientId, decimal price, int cardOptions, string cardNumber, string expirationDate, string cvc)
         {
             var buyPackage = new BuyPackageBusinessLayer();
-            var result = buyPackage.EffectivePackageBuy(price, cardNumber, expirationDate, cvc);
+            var result = buyPackage.EffectivePackageBuy(packageId, price, cardNumber, expirationDate, cvc);
             return result;
         }
 

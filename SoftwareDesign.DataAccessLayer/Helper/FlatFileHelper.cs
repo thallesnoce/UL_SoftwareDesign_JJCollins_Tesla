@@ -97,8 +97,8 @@ namespace SoftwareDesign.Entities.Helper
 
             /*Transport types*/
             flatFile.Transports = new List<TransportEntity>() {
-                new TransportEntity() { TransportId = 1, Name = "Airplane", Description = "Airplane Otion", TransportPartnerId = "1" },
-                new TransportEntity() { TransportId = 2, Name = "Bus", Description = "Bus Option", TransportPartnerId = "2" }
+                new TransportEntity() { TransportId = 1, Name = "Airplane", Description = "Airplane Otion", TransportPartnerId = 1 },
+                new TransportEntity() { TransportId = 2, Name = "Bus", Description = "Bus Option", TransportPartnerId = 2 }
             };
 
             /*Destinations*/
@@ -112,11 +112,11 @@ namespace SoftwareDesign.Entities.Helper
 
             /*Hoteis*/
             flatFile.Hoteis = new List<HotelEntity>() {
-                new HotelEntity() { HotelId = 1, Name = "Savoy Hotel", Description = "The best option 5 stars in Dublin", HotelPartnerId = "1" ,City="",NumberStars="5 Stars"},
-                new HotelEntity() { HotelId = 2, Name = "Absolute Limerick Hotel", Description = "Long Description", HotelPartnerId = "2" ,City="",NumberStars="4 Stars"},
-                new HotelEntity() { HotelId = 3, Name = "Galway Hotel", Description = "Long Description", HotelPartnerId = "3" ,City="",NumberStars=""},
-                new HotelEntity() { HotelId = 4, Name = "The Louvre Hotel", Description = "Long Description", HotelPartnerId = "4" ,City="",NumberStars=""},
-                new HotelEntity() { HotelId = 5, Name = "Belo Horizonte Hotel", Description = "Long Description", HotelPartnerId = "5" ,City="",NumberStars=""}
+                new HotelEntity() { HotelId = 1, Name = "Savoy Hotel", Description = "The best option 5 stars in Dublin", HotelPartnerId = 1 ,City="",NumberStars="5 Stars"},
+                new HotelEntity() { HotelId = 2, Name = "Absolute Limerick Hotel", Description = "Long Description", HotelPartnerId = 2 ,City="",NumberStars="4 Stars"},
+                new HotelEntity() { HotelId = 3, Name = "Galway Hotel", Description = "Long Description", HotelPartnerId = 3 ,City="",NumberStars=""},
+                new HotelEntity() { HotelId = 4, Name = "The Louvre Hotel", Description = "Long Description", HotelPartnerId = 4 ,City="",NumberStars=""},
+                new HotelEntity() { HotelId = 5, Name = "Belo Horizonte Hotel", Description = "Long Description", HotelPartnerId = 5 ,City="",NumberStars=""}
             };
 
             /*Packages*/

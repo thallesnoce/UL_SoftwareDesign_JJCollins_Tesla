@@ -49,3 +49,10 @@ C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.Entities.dll
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.Entities.pdb
 C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.Entities.dll.config
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.ControllerLayer.Business.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.DataAccessLayer.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\EntityFramework.dll
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.ControllerLayer.Business.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.DataAccessLayer.pdb
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\SoftwareDesign.DataAccessLayer.dll.config
+C:\DevLeks\UL_SoftwareDesign_JJCollins_Tesla\SoftwareDesign.ControllerLayer.API\bin\EntityFramework.xml

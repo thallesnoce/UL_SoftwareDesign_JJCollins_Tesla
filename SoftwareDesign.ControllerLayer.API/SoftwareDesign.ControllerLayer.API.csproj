@@ -169,11 +169,17 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SoftwareDesign.ControllerLayer.Business\SoftwareDesign.ControllerLayer.Business.csproj">
+      <Project>{6122e149-2e59-41c5-bb9f-3f5782f384fb}</Project>
+      <Name>SoftwareDesign.ControllerLayer.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SoftwareDesign.Model\SoftwareDesign.Entities.csproj">
       <Project>{9f251ea9-a550-4362-9da2-c58f1d8a6b4a}</Project>
       <Name>SoftwareDesign.Entities</Name>

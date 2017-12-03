@@ -16,7 +16,7 @@ namespace SoftwareDesign.ThirdPartyCreditCard
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{creditCardNumber}/{cvc}/{value}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

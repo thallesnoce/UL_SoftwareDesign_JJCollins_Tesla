@@ -39,7 +39,7 @@ namespace SoftwareDesign.View.Controllers
         public ActionResult CalculatePrice(int packageId, string additionalServices)
         {
             var package = new BuyPackageBusinessLayer();
-            var additionalServicesAux = additionalServices.Split(',').Select(x => Convert.ToInt32(x)).ToList();
+            var additionalServicesAux = !string.IsNullOrEmpty(additionalServices) ? additionalServices.Split(',').Select(x => Convert.ToInt32(x)).ToList() : new List<int>();
             var price = package.CalculatePrice(packageId, additionalServicesAux);
             var packagePrice = new PackageEntity() { Price = price };
 
@@ -89,6 +89,6 @@ namespace SoftwareDesign.View.Controllers
            //  var list = new PackageBusinessLayer()
              return View(list);
          }*/
-        
+
     }
 }

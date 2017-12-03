@@ -9,11 +9,16 @@
         }
 
         bindServices() {
-            debugger;
-            $("js-btnAddService").click(() => {
-                debugger;
-                var selectService = $("js-serviceOption").val;
-                this.selectedServices = `${selectService}`;
+
+            $("#js-serviceOption").kendoMultiSelect({
+                placeholder: "Select Additional Service...",
+                dataSource: [
+                    { Name: "Honey Moon + 800.00", Id: 1 },
+                    { Name: "Bachelor Party Holiday + 1000.00", Id: 2 },
+                    { Name: "BirthDay Party + 100", Id: 3 }
+                ],
+                dataTextField: "Name",
+                dataValueField: "Id"
             });
         }
 
@@ -24,9 +29,13 @@
                 var $buttonClicked = $(this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };
+
+                var servicesKendo: Array<number> = $("#js-serviceOption").data("kendoMultiSelect").value();
+                var services = servicesKendo.join(",");
+
                 var request = {
                     packageId: this.packageId,
-                    additionalServices: "1,2"
+                    additionalServices: services
                 };
 
                 $.get(url, request, (data) => {
