@@ -51,16 +51,27 @@
         </dd>
     </dl>
 </div>
-<p>
-    <a href="#" id="btnBuyPackage">Buy Package</a> |
+<div>
+    <div style="float:left"><label>Add Service:</label></div>
+    <div style="float:left"><select id="js-serviceOption" style="width: 400px;"></select></div>
+</div>
+<br />
+<p style="clear:both">
+    <a href="#" id="js-btnBuyPackage">Buy Package</a> |
     @Html.ActionLink("Back", "Search")
 </p>
 
 @Html.ActionLink("Make Enquire", "Index", "Enquire", new { packageId = Model.PackageId }, null)
 @section scripts
 {
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.1026/styles/kendo.material.mobile.min.css" />
+
+    <script src="https://kendo.cdn.telerik.com/2017.3.1026/js/kendo.all.min.js"></script>
+
     <script src="~/App_Scripts/Package.js"></script>
     <script>
-        var package = new Package.BuyPackageController();
+        var package = new Package.BuyPackageController(@Model.PackageId);
     </script>
 }

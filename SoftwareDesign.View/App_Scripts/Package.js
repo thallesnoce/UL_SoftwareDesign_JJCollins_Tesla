@@ -1,20 +1,37 @@
 var Package;
 (function (Package) {
-    var BuyPackageController = (function () {
-        function BuyPackageController() {
+    var BuyPackageController = /** @class */ (function () {
+        function BuyPackageController(packageId) {
+            this.packageId = packageId;
+            this.selectedServices = "";
             this.bindCalculatePrice();
             this.bindBuyPackage();
+            this.bindServices();
         }
+        BuyPackageController.prototype.bindServices = function () {
+            $("#js-serviceOption").kendoMultiSelect({
+                placeholder: "Select Additional Service...",
+                dataSource: [
+                    { Name: "Honey Moon + 800.00", Id: 1 },
+                    { Name: "Bachelor Party Holiday + 1000.00", Id: 2 },
+                    { Name: "BirthDay Party + 100", Id: 3 }
+                ],
+                dataTextField: "Name",
+                dataValueField: "Id"
+            });
+        };
         BuyPackageController.prototype.bindCalculatePrice = function () {
             var _this = this;
             var url = '/Package/CalculatePrice';
-            $("#btnBuyPackage").click(function () {
+            $("#js-btnBuyPackage").click(function () {
                 var $buttonClicked = $(_this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };
+                var servicesKendo = $("#js-serviceOption").data("kendoMultiSelect").value();
+                var services = servicesKendo.join(",");
                 var request = {
-                    packageId: 1,
-                    additionalServices: "1,2"
+                    packageId: _this.packageId,
+                    additionalServices: services
                 };
                 $.get(url, request, function (data) {
                     $('#myModalContent').html(data);
@@ -31,7 +48,6 @@ var Package;
             var _this = this;
             var url = '/Package/BuyPackage';
             $("#btnBuy").click(function () {
-                debugger;
                 var $buttonClicked = $(_this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };

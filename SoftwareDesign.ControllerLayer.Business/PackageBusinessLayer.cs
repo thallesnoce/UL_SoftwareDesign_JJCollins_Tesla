@@ -59,13 +59,8 @@ namespace SoftwareDesign.ControllerLayer.Business
 
         public Tuple<Boolean, string> BuyPackage(int packageId, int clientId, decimal price, int cardOptions, string cardNumber, string expirationDate, string cvc)
         {
-            //var packageData = new UserDataAccess().GetPackage(packageId);
-            //TODO: Implement the clientId
-
-            //TODO: Implement the Design Patter Interceptor here.
-
-            var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
-
+            var buyPackage = new BuyPackageBusinessLayer();
+            var result = buyPackage.EffectivePackageBuy(packageId, price, cardNumber, expirationDate, cvc);
             return result;
         }
 
@@ -74,12 +69,14 @@ namespace SoftwareDesign.ControllerLayer.Business
             //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().SearchPackage(transportId, destinationId, hotelId, startDate, endDate);
         }
+
         // Monica and hang use case implementation 11/11/2017 
         public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().DetailsPackage(Name, PackageId, Description, Price, startDate, endDate);
         }
+
         public List<PackageEntity> InsertPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
             var data = new PackageDataAccess();
@@ -113,41 +110,6 @@ namespace SoftwareDesign.ControllerLayer.Business
             registerObserver(co);
             notifyAllObservers();
             return new PackageDataAccess().GetPackage(packageId);
-        }
-
-        /// <summary>
-        /// This Method Simulate a comunication with the Third Part Software. 
-        /// In this case Credit Card Operator System.
-        /// Was Created a API to fake this comunication.
-        /// </summary>
-        /// <param name="price"></param>
-        /// <param name="cardNumber"></param>
-        /// <param name="expirationDate"></param>
-        /// <param name="cvc"></param>
-        /// <returns></returns>
-        private static Tuple<bool, string> CheckWithThirdPartCrediCard(decimal price, string cardNumber, string expirationDate, string cvc)
-        {
-            bool isSuccess = false;
-            string message = string.Empty;
-
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:58561/");
-            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.GetAsync($"CrediCard/PostRegisterBuy/{cardNumber}/{expirationDate}/{cvc}/{price}").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                var transactionStatus = response.Content.ReadAsStringAsync().Result.Split('|');
-
-                isSuccess = Convert.ToBoolean(transactionStatus[0]);
-                message = transactionStatus[1];
-            }
-            else
-            {
-                isSuccess = false;
-                message = "Error when trying to connect to the Credit Card Company.";
-            }
-
-            return new Tuple<bool, string>(isSuccess, message);
         }
     }
 }

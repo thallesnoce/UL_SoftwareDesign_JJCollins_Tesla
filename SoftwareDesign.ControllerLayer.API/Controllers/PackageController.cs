@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,27 +9,43 @@ using System.Web.Http;
 
 namespace SoftwareDesign.ControllerLayer.API.Controllers
 {
-    //public class PackageController : ApiController
-    public class PackageController
+    [RoutePrefix("api/Package")]
+    public class PackageController : ApiController
     {
-        //public void BuyPackage(int transportPartnerId, Destination destination, Hotel hotel)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        [HttpGet]
+        [Route("BuyPackage/{packageId}/{clientId}/{price}/{cardOptions}/{cardNumber}/{expirationDate}/{cvc}")]
+        public Tuple<bool, string> BuyPackage(int packageId, int clientId, decimal price, string cardOptions, string cardNumber, string expirationDate, string cvc)
+        {
+            return new BuyPackageBusinessLayer().EffectivePackageBuy(packageId, price, cardNumber, expirationDate, cvc);
+        }
 
-        //public List<Package> SearchPackage(int transportId, int hotelId, DateTime startDate, DateTime endDate)
-        //{
-        //    //TODO: Use a design pattern to create an instance of Repository
-        //    return new PackageRepository().SearchPackage(transportId, hotelId, startDate, endDate);
-        //}
+        [HttpGet]
+        [Route("SearchPackage/{transportId}/{destinationId}/{hotelId}")]
+        public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId)
+        {
+            return new PackageBusinessLayer().SearchPackage(transportId, destinationId, hotelId, new DateTime(), new DateTime());
+        }
 
-        //public Package GetPackage(int packageId)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public Package ViewPackage()
-        //{
-        //    return new PackageRepository().ViewPackage();
-        //}
+        [HttpGet]
+        [Route("CalculatePrice/{packageId}/{additionalServices}")]
+        public PackageEntity CalculatePrice(int packageId, string additionalServices)
+        {
+            var package = new BuyPackageBusinessLayer();
+            var additionalServicesAux = !string.IsNullOrEmpty(additionalServices) ? additionalServices.Split(',').Select(x => Convert.ToInt32(x)).ToList() : new List<int>();
+            var price = package.CalculatePrice(packageId, additionalServicesAux);
+            return new PackageEntity()
+            {
+                PackageId = packageId,
+                Price = price
+            };
+        }
+
+        [HttpGet]
+        [Route("GetPackage/{packageId}")]
+        public PackageEntity GetPackage(int packageId)
+        {
+            var package = new PackageBusinessLayer().ViewPackage(packageId);
+            return package;
+        }
     }
 }

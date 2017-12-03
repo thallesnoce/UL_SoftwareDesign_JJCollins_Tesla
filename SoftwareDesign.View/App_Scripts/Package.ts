@@ -1,22 +1,41 @@
 ﻿module Package {
 
     export class BuyPackageController {
-
-        constructor() {
+        private selectedServices: string = "";
+        constructor(private packageId: Number) {
             this.bindCalculatePrice();
             this.bindBuyPackage();
+            this.bindServices();
+        }
+
+        bindServices() {
+
+            $("#js-serviceOption").kendoMultiSelect({
+                placeholder: "Select Additional Service...",
+                dataSource: [
+                    { Name: "Honey Moon + 800.00", Id: 1 },
+                    { Name: "Bachelor Party Holiday + 1000.00", Id: 2 },
+                    { Name: "BirthDay Party + 100", Id: 3 }
+                ],
+                dataTextField: "Name",
+                dataValueField: "Id"
+            });
         }
 
         bindCalculatePrice() {
             var url = '/Package/CalculatePrice';
 
-            $("#btnBuyPackage").click(() => {                
+            $("#js-btnBuyPackage").click(() => {
                 var $buttonClicked = $(this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };
+
+                var servicesKendo: Array<number> = $("#js-serviceOption").data("kendoMultiSelect").value();
+                var services = servicesKendo.join(",");
+
                 var request = {
-                    packageId: 1,
-                    additionalServices: "1,2"
+                    packageId: this.packageId,
+                    additionalServices: services
                 };
 
                 $.get(url, request, (data) => {
@@ -36,7 +55,6 @@
             var url = '/Package/BuyPackage';
 
             $("#btnBuy").click(() => {
-                debugger;
                 var $buttonClicked = $(this);
                 var id = $buttonClicked.attr('data-id');
                 var options = { "backdrop": "static", keyboard: true };

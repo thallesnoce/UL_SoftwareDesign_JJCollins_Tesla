@@ -10,6 +10,6 @@ namespace SoftwareDesign.Entities
         public string Description { get; set; }
         public string City { get; set; }
         public string NumberStars { get; set; }
-        public string HotelPartnerId { get; set; }
+        public int HotelPartnerId { get; set; }        
     }
 }

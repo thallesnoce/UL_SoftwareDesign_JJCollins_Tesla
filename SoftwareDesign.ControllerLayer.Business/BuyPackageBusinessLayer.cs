@@ -1,9 +1,11 @@
-﻿using SoftwareDesign.DataAccessLayer;
+﻿using SoftwareDesign.ControllerLayer.Business.Interceptor;
+using SoftwareDesign.DataAccessLayer;
 using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,10 +18,41 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
         }
 
-        public Tuple<Boolean, string> EffectivePackageBuy(decimal price, int cardOptions, string cardNumber, string expirationDate, string cvc)
+        public Tuple<Boolean, string> EffectivePackageBuy(int packageid, decimal price, string cardNumber, string expirationDate, string cvc)
         {
-            var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
-            return result;
+            /*
+             * >>> Interceptor <<<
+             *  Here the framework triggers the PreMarshalRequest
+             */
+            var unmarshaledRequest = new UnmarshaledRequest();
+            unmarshaledRequest.setPackageId(packageid);
+            BuyPackageDispatcher.Instance.DispatchClientRequestInterceptorPreMarshal(unmarshaledRequest);
+
+            /**
+             * 
+             This will ensure that buy package will happen in a synchronous way
+             *
+             */
+            //TODO: Check this
+            lock (locker)
+            {
+                var package = new PackageDataAccess().GetPackage(packageid);
+
+                var hotel = CheckWithThirdHotel(package.Hotel.HotelPartnerId);
+                var transport = CheckWithThirdTransport(package.Transport.TransportPartnerId);
+
+                var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
+            }
+
+            /*
+             * >>> Interceptor <<<
+             *  Here the framework triggers the PostMarshalRequest
+             */
+            var marshaledRequest = new MarshaledRequest();
+            marshaledRequest.setPackageId(packageid);
+            BuyPackageDispatcher.Instance.DispatchClientRequestInterceptorPostMarshal(marshaledRequest);
+
+            return new Tuple<bool, string>(true, "");
         }
 
         public decimal CalculatePrice(int packageId, List<int> aditionalServices)
@@ -36,6 +69,26 @@ namespace SoftwareDesign.ControllerLayer.Business
         }
 
         /// <summary>
+        /// Simulate Hotel Parter
+        /// </summary>
+        /// <param name="hotelId"></param>
+        /// <returns></returns>
+        private static Tuple<bool, string> CheckWithThirdHotel(int hotelId)
+        {
+            return new Tuple<bool, string>(true, string.Empty);
+        }
+
+        /// <summary>
+        /// Simulate Transport Partner
+        /// </summary>
+        /// <param name="TransportId"></param>
+        /// <returns></returns>
+        private static Tuple<bool, string> CheckWithThirdTransport(int TransportId)
+        {
+            return new Tuple<bool, string>(true, string.Empty);
+        }
+
+        /// <summary>
         /// This Method Simulate a comunication with the Third Part Software. 
         /// In this case Credit Card Operator System.
         /// Was Created a API to fake this comunication.
@@ -47,35 +100,31 @@ namespace SoftwareDesign.ControllerLayer.Business
         /// <returns></returns>
         private static Tuple<bool, string> CheckWithThirdPartCrediCard(decimal price, string cardNumber, string expirationDate, string cvc)
         {
-            /**
-             * 
-             This will ensure that buy package will happen in a synchronous way
-             *
-             */
-            lock (locker)
+            bool isSuccess = false;
+            string message = string.Empty;
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:58561/");
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync($"api/CreditCard/{cardNumber}/{cvc}/{price.ToString("F2").Replace(".", "")}").Result;
+
+            if (response.IsSuccessStatusCode)
             {
-                bool isSuccess = false;
-                string message = string.Empty;
+                var transactionStatus = response.Content.ReadAsStringAsync().Result.Split('|');
 
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://localhost:58561/");
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync($"CrediCard/PostRegisterBuy/{cardNumber}/{expirationDate}/{cvc}/{price}").Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    var transactionStatus = response.Content.ReadAsStringAsync().Result.Split('|');
-
-                    isSuccess = Convert.ToBoolean(transactionStatus[0]);
-                    message = transactionStatus[1];
-                }
-                else
-                {
-                    isSuccess = false;
-                    message = "Error when trying to connect to the Credit Card Company.";
-                }
-
-                return new Tuple<bool, string>(isSuccess, message);
+                isSuccess = true;
+                message = "Transaction successfully completed";
             }
+            else
+            {
+                isSuccess = false;
+                message = "Error when trying to connect to the Credit Card Company.";
+            }
+
+            return new Tuple<bool, string>(isSuccess, message);
         }
     }
 }

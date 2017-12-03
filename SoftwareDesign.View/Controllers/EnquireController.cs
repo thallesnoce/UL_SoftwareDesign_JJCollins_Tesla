@@ -18,9 +18,8 @@ namespace SoftwareDesign.View.Controllers
         [HttpGet]
         public ActionResult MakeEnquire(int PackageId, String Message)
         {
-            var ClientId = 1;
-            var package = new EnquireBusinessLayer();
-            return View(package);
+            var ClientId = 1;            
+            return View();
         }
     }
 }

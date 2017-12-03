@@ -13,22 +13,23 @@
     <br />
     <div>
         <div>
-            @Html.HiddenFor(model => model.PackageId)
+            @Html.HiddenFor(model => model.PackageId, new { display = "none" })
             @Html.HiddenFor(model => model.Price)
+            <br />
+            @Html.Label("Card:")
             @Html.DropDownList("cardOptions", "-select CardType-")
             <br />
-            @Html.Label("Card Number")
+            @Html.Label("Card Number:")
             @Html.TextBox("cardNumber")
             <br />
-            @Html.Label("Expiration Date")
+            @Html.Label("Expiration Date:")
             @Html.TextBox("expirationDate")
-            <br />
-            @Html.Label("CVC")
+            @Html.Label("CVC:")
             @Html.TextBox("cvc")
         </div>
         <br />
         <div>
-            <div style="float:right; background-color:limegreen">
+            <div style="text-align:right; margin:10px">
                 <input id="btnBuy" type="submit" value="Confirm Buy" />
             </div>
         </div>

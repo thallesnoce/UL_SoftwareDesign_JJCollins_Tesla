@@ -15,7 +15,6 @@ namespace SoftwareDesign.Entities
     /// <summary>
     /// Component class
     /// </summary>
-    /// isnt the interface supposed to also have both getter and setter methods?
     public interface IPackage
     {
         int PackageId { get; set; }
@@ -80,7 +79,7 @@ namespace SoftwareDesign.Entities
     /// </summary>
     public class HoneyMoonPackage : PackageServices
     {
-        private decimal honeyMoonAdditionalPrice = 800.50M;
+        private decimal honeyMoonAdditionalPrice = 800.00M;
 
         public HoneyMoonPackage(IPackage package) : base(package)
         {
@@ -99,7 +98,7 @@ namespace SoftwareDesign.Entities
     /// </summary>
     public class BachelorPartyPackage : PackageServices
     {
-        private decimal bachelorAdditionalPrice = 1050.00M;
+        private decimal bachelorAdditionalPrice = 1000.00M;
 
         public BachelorPartyPackage(IPackage package) : base(package)
         {

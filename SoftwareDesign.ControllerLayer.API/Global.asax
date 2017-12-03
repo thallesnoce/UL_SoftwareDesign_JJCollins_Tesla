@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="namespace SoftwareDesign.UI.WebApiApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SoftwareDesign.ControllerLayer.API.WebApiApplication" Language="C#" %>
