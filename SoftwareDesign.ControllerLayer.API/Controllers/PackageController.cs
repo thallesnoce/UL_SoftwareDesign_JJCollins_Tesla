@@ -31,6 +31,7 @@ namespace SoftwareDesign.ControllerLayer.API.Controllers
         public PackageEntity CalculatePrice(int packageId, string additionalServices)
         {
             var package = new BuyPackageBusinessLayer();
+            additionalServices = additionalServices != "0" ? additionalServices : string.Empty;
             var additionalServicesAux = !string.IsNullOrEmpty(additionalServices) ? additionalServices.Split(',').Select(x => Convert.ToInt32(x)).ToList() : new List<int>();
             var price = package.CalculatePrice(packageId, additionalServicesAux);
             return new PackageEntity()

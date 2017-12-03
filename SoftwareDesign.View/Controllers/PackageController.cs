@@ -57,7 +57,8 @@ namespace SoftwareDesign.View.Controllers
             {
                 client.BaseAddress = new Uri("http://localhost:54155/api/");
                 //HTTP GET
-                var responseTask = client.GetAsync($"Package/CalculatePrice/{packageId}/{additionalServices}");
+                var services = !string.IsNullOrEmpty(additionalServices) ? additionalServices : "0";
+                var responseTask = client.GetAsync($"Package/CalculatePrice/{packageId}/{services}");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
