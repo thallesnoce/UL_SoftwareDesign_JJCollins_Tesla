@@ -21,7 +21,7 @@ namespace SoftwareDesign.ControllerLayer.Business.Interceptor
             sb.Add($"clientId : {context.getPackageId()} trying to buy the packageid: {context.getPackageId()}");
             sb.Add($".");
 
-            File.AppendAllLines(Path.Combine("%temp%", "PreMarshal"), sb);
+            File.AppendAllLines(Path.Combine(@"C:\Workarea", "PreMarshal"), sb);
         }
 
         public void onPostMarshalRequest(IMarshaledRequest context)
@@ -31,7 +31,7 @@ namespace SoftwareDesign.ControllerLayer.Business.Interceptor
             sb.Add($"{context.getPackageId()} was bought by the client {context.getPackageId()}");
             sb.Add($".");
 
-            File.AppendAllLines(Path.Combine("%temp%", "PostMarshal"), sb);
+            File.AppendAllLines(Path.Combine(@"C:\Workarea", "PostMarshal"), sb);
         }
     }
 }

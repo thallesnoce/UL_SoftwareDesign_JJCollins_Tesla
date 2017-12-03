@@ -3,17 +3,16 @@ using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 
 
 namespace SoftwareDesign.View.Controllers
 {
-    //this an controller class. 
-    //to control the view only.
     public class ReportController : Controller
     {
-        // GET: Report
         public ActionResult Index()
         {
             //1- Created: a business class in the business SoftwareDesign.ControllerLayer.Business
@@ -27,13 +26,29 @@ namespace SoftwareDesign.View.Controllers
             //delete these two lines later. after you finish create the steps before
             //replace the fake list with the true return.
 
-            var ReportPackage = new ReportBusinessLayer();
-            var PackageList = ReportPackage.ListViewedPackges();
-            return View(PackageList);
-        }  
-        
-            // GET: Report/Details/5
-            public ActionResult Details(int id)
+            var reports = new List<ReportEntity>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54155/api/");
+                //HTTP GET
+                var responseTask = client.GetAsync("Report");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<ReportEntity>>();
+                    readTask.Wait();
+
+                    reports = readTask.Result;
+                }
+            }
+
+            return View(reports);
+        }
+
+        // GET: Report/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }

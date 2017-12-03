@@ -30,11 +30,11 @@ namespace SoftwareDesign.ControllerLayer.Business.Test
             var clientId = 2;
 
             /*ServiceType.BachelorPartyHoliday
-             Adds 1050.00 euros to the package price 
+             Adds 1050.00 euro to the package price 
              */
 
             /*ServiceType.BirthDayParty
-             Adds 100 euros to price            
+             Adds 100 euro to price            
              */
 
             var aditionalServices = new List<int>() { (int)ServiceType.BachelorPartyHoliday, (int)ServiceType.BirthDayParty };

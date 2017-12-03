@@ -1,7 +1,9 @@
 ﻿using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,16 +21,48 @@ namespace SoftwareDesign.View.Controllers
         // GET: MngPackage
         public ActionResult Index()
         {
-            var managePackage = new ManagePackageBusinessLayer();
-            var packages = managePackage.ListPackage();
+            List<PackageEntity> packages = new List<PackageEntity>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54155/api/");
+                //HTTP GET
+                var responseTask = client.GetAsync($"ManagePackage");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<PackageEntity>>();
+                    readTask.Wait();
+
+                    packages = readTask.Result;
+                }
+            }
+
             return View(packages);
         }
 
         // GET: MngPackage/Details/5
         public ActionResult Details(int packageId)
         {
-            var package = new PackageBusinessLayer();
-            package.ViewPackage(packageId);
+            PackageEntity package = new PackageEntity();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54155/api/");
+                //HTTP GET
+                var responseTask = client.GetAsync($"Package/GetPackage/{packageId}");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<PackageEntity>();
+                    readTask.Wait();
+
+                    package = readTask.Result;
+                }
+            }
+
             return View(package);
         }
 
@@ -47,20 +81,20 @@ namespace SoftwareDesign.View.Controllers
         [HttpPost]
         public ActionResult Create(string Name, int PackageId, string Description, int Price, DateTime startDate, DateTime endDate)
         {
-            var managePackage = new ManagePackageBusinessLayer();
-            managePackage.AddPackage(Name, PackageId, Description, Price, startDate, endDate);
+            //var managePackage = new ManagePackageBusinessLayer();
+            //managePackage.AddPackage(Name, PackageId, Description, Price, startDate, endDate);
             return View("Index");
         }
 
         // GET: MngPackage/Edit/5
         public ActionResult Edit(string Name, int PackageId, string Description, int Price, DateTime startDate, DateTime endDate)
         {
-            var managePackage = new ManagePackageBusinessLayer();
-            managePackage.AddPackage(Name, PackageId, Description, Price, startDate, endDate);
-
+            //var managePackage = new ManagePackageBusinessLayer();
+            //managePackage.AddPackage(Name, PackageId, Description, Price, startDate, endDate);
 
             return View("Index");
         }
+
         /*
          * The EditPackage in businesslayer should be void.
          * The Return should be Return View("Index")
@@ -69,17 +103,45 @@ namespace SoftwareDesign.View.Controllers
         [HttpPost]
         public ActionResult EditPackage(int PackageId)
         {
-
             return View();
         }
 
         // GET: MngPackage/Delete/5
         public ActionResult Delete(int packageId)
         {
-            var managePackage = new ManagePackageBusinessLayer();
-            managePackage.DeletePackage(packageId);
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54155/api/");
+                //HTTP GET
+                var responseTask = client.GetAsync($"ManagePackage/Delete/{packageId}");
+                responseTask.Wait();
 
-            var packages = managePackage.ListPackage();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<PackageEntity>();
+                    readTask.Wait();
+                }
+            }
+
+            List<PackageEntity> packages = new List<PackageEntity>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:54155/api/");
+                //HTTP GET
+                var responseTask = client.GetAsync($"ManagePackage");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<List<PackageEntity>>();
+                    readTask.Wait();
+
+                    packages = readTask.Result;
+                }
+            }
+
             return View("Index", packages);
         }
     }
