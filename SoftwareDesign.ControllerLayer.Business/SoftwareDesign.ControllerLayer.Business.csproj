@@ -45,6 +45,7 @@
     <Compile Include="ConcreteObserver.cs" />
     <Compile Include="EnquireBusinessLayer.cs" />
     <Compile Include="EnquireObserver.cs" />
+    <Compile Include="Facade.cs" />
     <Compile Include="Interceptor_Client\BuyPackageInterceptor.cs" />
     <Compile Include="Interceptor\BuyPackageDispatcher.cs" />
     <Compile Include="Interceptor\IClientRequestInterceptor.cs" />
