@@ -1,6 +1,6 @@
 var Package;
 (function (Package) {
-    var BuyPackageController = /** @class */ (function () {
+    var BuyPackageController = (function () {
         function BuyPackageController(packageId) {
             this.packageId = packageId;
             this.selectedServices = "";
