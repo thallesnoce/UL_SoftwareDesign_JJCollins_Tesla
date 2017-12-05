@@ -28,7 +28,7 @@ namespace SoftwareDesign.ControllerLayer.Business.Interceptor
         {
             var sb = new List<string>();
             sb.Add($"Interceptor PostMarshal - {DateTime.Now.ToShortDateString()}");
-            sb.Add($"{context.getPackageId()} was bought by the client {context.getPackageId()}");
+            sb.Add($"Packageid: {context.getPackageId()} was bought by the client {context.getPackageId()}");
             sb.Add($".");
 
             File.AppendAllLines(Path.Combine(@"C:\Workarea", "PostMarshal"), sb);

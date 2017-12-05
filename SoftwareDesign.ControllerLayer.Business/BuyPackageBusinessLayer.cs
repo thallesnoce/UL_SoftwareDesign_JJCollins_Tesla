@@ -20,6 +20,10 @@ namespace SoftwareDesign.ControllerLayer.Business
 
         public Tuple<Boolean, string> EffectivePackageBuy(int packageid, decimal price, string cardNumber, string expirationDate, string cvc)
         {
+            Tuple<bool, string> hotelPartnerReturn;
+            Tuple<bool, string> transportPartnerReturn;
+            Tuple<bool, string> crediCardPartnerReturn;
+
             /*
              * >>> Interceptor <<<
              *  Here the framework triggers the PreMarshalRequest
@@ -33,15 +37,13 @@ namespace SoftwareDesign.ControllerLayer.Business
              This will ensure that buy package will happen in a synchronous way
              *
              */
-            //TODO: Check this
             lock (locker)
             {
                 var package = new PackageDataAccess().GetPackage(packageid);
 
-                var hotel = CheckWithThirdHotel(package.Hotel.HotelPartnerId);
-                var transport = CheckWithThirdTransport(package.Transport.TransportPartnerId);
-
-                var result = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
+                hotelPartnerReturn = CheckWithThirdHotel(package.Hotel.HotelPartnerId);
+                transportPartnerReturn = CheckWithThirdTransport(package.Transport.TransportPartnerId);
+                crediCardPartnerReturn = CheckWithThirdPartCrediCard(price, cardNumber, expirationDate, cvc);
             }
 
             /*
@@ -52,7 +54,7 @@ namespace SoftwareDesign.ControllerLayer.Business
             marshaledRequest.setPackageId(packageid);
             BuyPackageDispatcher.Instance.DispatchClientRequestInterceptorPostMarshal(marshaledRequest);
 
-            return new Tuple<bool, string>(true, "");
+            return new Tuple<bool, string>(crediCardPartnerReturn.Item1, crediCardPartnerReturn.Item2);
         }
 
         public decimal CalculatePrice(int packageId, List<int> aditionalServices)

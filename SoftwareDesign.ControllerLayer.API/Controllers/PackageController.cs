@@ -1,4 +1,6 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
+﻿using AutoMapper;
+using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.DTO;
 using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
@@ -21,32 +23,35 @@ namespace SoftwareDesign.ControllerLayer.API.Controllers
 
         [HttpGet]
         [Route("SearchPackage/{transportId}/{destinationId}/{hotelId}")]
-        public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId)
+        public List<PackageDTO> SearchPackage(int transportId, int destinationId, int hotelId)
         {
-            return new PackageBusinessLayer().SearchPackage(transportId, destinationId, hotelId, new DateTime(), new DateTime());
+            var packages = new PackageBusinessLayer().SearchPackage(transportId, destinationId, hotelId, new DateTime(), new DateTime());
+            return Mapper.Map<List<PackageDTO>>(packages);
         }
 
         [HttpGet]
         [Route("CalculatePrice/{packageId}/{additionalServices}")]
-        public PackageEntity CalculatePrice(int packageId, string additionalServices)
+        public PackageDTO CalculatePrice(int packageId, string additionalServices)
         {
             var package = new BuyPackageBusinessLayer();
             additionalServices = additionalServices != "0" ? additionalServices : string.Empty;
             var additionalServicesAux = !string.IsNullOrEmpty(additionalServices) ? additionalServices.Split(',').Select(x => Convert.ToInt32(x)).ToList() : new List<int>();
             var price = package.CalculatePrice(packageId, additionalServicesAux);
-            return new PackageEntity()
+            var packageEntity = new PackageEntity()
             {
                 PackageId = packageId,
                 Price = price
             };
+
+            return Mapper.Map<PackageDTO>(packageEntity);
         }
 
         [HttpGet]
         [Route("GetPackage/{packageId}")]
-        public PackageEntity GetPackage(int packageId)
+        public PackageDTO GetPackage(int packageId)
         {
             var package = new PackageBusinessLayer().ViewPackage(packageId);
-            return package;
+            return Mapper.Map<PackageDTO>(package);
         }
     }
 }

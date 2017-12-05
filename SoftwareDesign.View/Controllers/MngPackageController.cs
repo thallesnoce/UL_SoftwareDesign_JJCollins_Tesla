@@ -1,5 +1,4 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
-using SoftwareDesign.Entities;
+﻿using SoftwareDesign.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +20,7 @@ namespace SoftwareDesign.View.Controllers
         // GET: MngPackage
         public ActionResult Index()
         {
-            List<PackageEntity> packages = new List<PackageEntity>();
+            List<PackageDTO> packages = new List<PackageDTO>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54155/api/");
@@ -32,7 +31,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<List<PackageEntity>>();
+                    var readTask = result.Content.ReadAsAsync<List<PackageDTO>>();
                     readTask.Wait();
 
                     packages = readTask.Result;
@@ -45,7 +44,7 @@ namespace SoftwareDesign.View.Controllers
         // GET: MngPackage/Details/5
         public ActionResult Details(int packageId)
         {
-            PackageEntity package = new PackageEntity();
+            PackageDTO package = new PackageDTO();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54155/api/");
@@ -56,7 +55,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<PackageEntity>();
+                    var readTask = result.Content.ReadAsAsync<PackageDTO>();
                     readTask.Wait();
 
                     package = readTask.Result;
@@ -119,12 +118,12 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<PackageEntity>();
+                    var readTask = result.Content.ReadAsAsync<PackageDTO>();
                     readTask.Wait();
                 }
             }
 
-            List<PackageEntity> packages = new List<PackageEntity>();
+            List<PackageDTO> packages = new List<PackageDTO>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54155/api/");
@@ -135,7 +134,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<List<PackageEntity>>();
+                    var readTask = result.Content.ReadAsAsync<List<PackageDTO>>();
                     readTask.Wait();
 
                     packages = readTask.Result;

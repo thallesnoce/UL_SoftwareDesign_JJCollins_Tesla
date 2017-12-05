@@ -1,4 +1,6 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
+﻿using AutoMapper;
+using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.DTO;
 using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,10 @@ namespace SoftwareDesign.ControllerLayer.API.Controllers
 {
     public class ReportController : ApiController
     {
-        public List<ReportEntity> Get()
+        public List<ReportDTO> Get()
         {
-            var ReportPackage = new ReportBusinessLayer();
-            return ReportPackage.ListViewedPackges();
+            var list = new ReportBusinessLayer().ListViewedPackges();
+            return Mapper.Map<List<ReportDTO>>(list);
         }
     }
 }
