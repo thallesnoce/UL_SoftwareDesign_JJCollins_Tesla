@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PromotionEntity.cs" />
     <Compile Include="ClientEntity.cs" />
     <Compile Include="ConcretePackageFactory.cs" />
     <Compile Include="DestinationEntity.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="PackageFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportEntity.cs" />
+    <Compile Include="StaffEntity.cs" />
     <Compile Include="TransportEntity.cs" />
     <Compile Include="UserEntity.cs" />
   </ItemGroup>

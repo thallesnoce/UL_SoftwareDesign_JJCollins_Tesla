@@ -41,7 +41,6 @@ namespace SoftwareDesign.Entities
         public virtual HotelEntity Hotel { get; set; }
         public virtual TransportEntity Transport { get; set; }
         public virtual DestinationEntity Destination { get; set; }
-        //public virtual Payment Payment { get; set; }
         public virtual ClientEntity Client { get; set; }
 
         public decimal GetPrice()
