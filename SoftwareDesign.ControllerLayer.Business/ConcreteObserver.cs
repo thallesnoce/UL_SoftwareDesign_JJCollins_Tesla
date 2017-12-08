@@ -15,11 +15,7 @@ namespace SoftwareDesign.ControllerLayer.Business
         {
             var DataAccessLayer = new PackageDataAccess();
             DataAccessLayer.IncrementView(packageId);
-           
-           
         }
-
-
 
 
     }

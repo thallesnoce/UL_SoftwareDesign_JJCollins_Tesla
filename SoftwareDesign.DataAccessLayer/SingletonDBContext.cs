@@ -10,7 +10,7 @@ namespace SoftwareDesign.DataAccessLayer
 {
     /// <summary>
     /// In the entity framework its easy to change from one database to another.
-    /// If you do not have specific TSQL statement, you can just change the ConnectionString and make sure that the driver is installed.
+    /// If do not have specific TSQL statement,can change the ConnectionString and make sure the driver is installed.
     /// </summary>
     public static class SingletonDBContext
     {
