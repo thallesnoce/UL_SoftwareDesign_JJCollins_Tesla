@@ -8,7 +8,7 @@ namespace SoftwareDesign.ControllerLayer.Business
 {
     public interface Observer
     {
-        /*
+        /* 
          * update the state for Totalviews in the report
          * @pre packageId >0 && packageId != null
          * @post @IncrementPackageView --> totalViews + 1 --> totalViews >0
