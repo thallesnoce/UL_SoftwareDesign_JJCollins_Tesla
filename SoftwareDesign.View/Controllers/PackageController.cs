@@ -1,5 +1,4 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
-using SoftwareDesign.Entities;
+﻿using SoftwareDesign.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +26,7 @@ namespace SoftwareDesign.View.Controllers
             ViewBag.DestinationId = GetDestinations();
             ViewBag.HotelId = GetHoteis();
 
-            var packageList = new List<PackageEntity>();
+            var packageList = new List<PackageDTO>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54155/api/");
@@ -38,7 +37,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<List<PackageEntity>>();
+                    var readTask = result.Content.ReadAsAsync<List<PackageDTO>>();
                     readTask.Wait();
 
                     packageList = readTask.Result;
@@ -51,7 +50,7 @@ namespace SoftwareDesign.View.Controllers
         [HttpGet]
         public ActionResult CalculatePrice(int packageId, string additionalServices)
         {
-            PackageEntity package = new PackageEntity();
+            var package = new PackageDTO();
 
             using (var client = new HttpClient())
             {
@@ -64,7 +63,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<PackageEntity>();
+                    var readTask = result.Content.ReadAsAsync<PackageDTO>();
                     readTask.Wait();
 
                     package = readTask.Result;
@@ -115,7 +114,7 @@ namespace SoftwareDesign.View.Controllers
         [HttpGet]
         public ActionResult ViewPackage(int packageId)
         {
-            PackageEntity package = new PackageEntity();
+            var package = new PackageDTO();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54155/api/");
@@ -126,7 +125,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<PackageEntity>();
+                    var readTask = result.Content.ReadAsAsync<PackageDTO>();
                     readTask.Wait();
 
                     package = readTask.Result;
@@ -138,7 +137,7 @@ namespace SoftwareDesign.View.Controllers
 
         private IEnumerable<SelectListItem> GetDestinations()
         {
-            IEnumerable<DestinationEntity> transports = new List<DestinationEntity>();
+            IEnumerable<DestinationDTO> transports = new List<DestinationDTO>();
 
             using (var client = new HttpClient())
             {
@@ -150,7 +149,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<IList<DestinationEntity>>();
+                    var readTask = result.Content.ReadAsAsync<IList<DestinationDTO>>();
                     readTask.Wait();
 
                     transports = readTask.Result;
@@ -162,7 +161,7 @@ namespace SoftwareDesign.View.Controllers
 
         private IEnumerable<SelectListItem> GetHoteis()
         {
-            IEnumerable<HotelEntity> transports = new List<HotelEntity>();
+            IEnumerable<HotelDTO> transports = new List<HotelDTO>();
 
             using (var client = new HttpClient())
             {
@@ -174,7 +173,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<IList<HotelEntity>>();
+                    var readTask = result.Content.ReadAsAsync<IList<HotelDTO>>();
                     readTask.Wait();
 
                     transports = readTask.Result;
@@ -186,7 +185,7 @@ namespace SoftwareDesign.View.Controllers
 
         private IEnumerable<SelectListItem> GetTransports()
         {
-            IEnumerable<TransportEntity> transports = new List<TransportEntity>();
+            IEnumerable<TransportDTO> transports = new List<TransportDTO>();
 
             using (var client = new HttpClient())
             {
@@ -198,7 +197,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<IList<TransportEntity>>();
+                    var readTask = result.Content.ReadAsAsync<IList<TransportDTO>>();
                     readTask.Wait();
 
                     transports = readTask.Result;

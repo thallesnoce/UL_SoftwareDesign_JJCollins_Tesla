@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.Entities", "SoftwareDesign.Model\SoftwareDesign.Entities.csproj", "{9F251EA9-A550-4362-9DA2-C58F1D8A6B4A}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.ControllerLayer.API", "SoftwareDesign.ControllerLayer.API\SoftwareDesign.ControllerLayer.API.csproj", "{46AFFF65-ADBA-464E-9CE3-85E00E458DC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.ThirdPartyCreditCard", "SoftwareDesign.ThirdPartyCreditCard\SoftwareDesign.ThirdPartyCreditCard.csproj", "{F8F6221B-2CED-4585-AC9C-37E523DDD9BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareDesign.DTO", "SoftwareDesign.DTO\SoftwareDesign.DTO.csproj", "{8CB4F24E-CBF8-472C-84B5-CA361A2F5263}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{F8F6221B-2CED-4585-AC9C-37E523DDD9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F6221B-2CED-4585-AC9C-37E523DDD9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8F6221B-2CED-4585-AC9C-37E523DDD9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB4F24E-CBF8-472C-84B5-CA361A2F5263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB4F24E-CBF8-472C-84B5-CA361A2F5263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB4F24E-CBF8-472C-84B5-CA361A2F5263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB4F24E-CBF8-472C-84B5-CA361A2F5263}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

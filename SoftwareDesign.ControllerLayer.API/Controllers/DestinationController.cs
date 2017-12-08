@@ -1,4 +1,6 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
+﻿using AutoMapper;
+using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.DTO;
 using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,10 @@ namespace SoftwareDesign.ControllerLayer.API.Controllers
 {
     public class DestinationController : ApiController
     {
-        public List<DestinationEntity> Get()
+        public List<DestinationDTO> Get()
         {
-            var business = new DestinationBusinessLayer();
-            return business.ListDestinations();
+            var list = new DestinationBusinessLayer().ListDestinations();
+            return Mapper.Map<List<DestinationDTO>>(list);
         }
     }
 }

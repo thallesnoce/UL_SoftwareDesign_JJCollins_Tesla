@@ -1,20 +1,17 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
-using SoftwareDesign.Entities;
-using System;
+﻿using AutoMapper;
+using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.DTO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace SoftwareDesign.ControllerLayer.API.Controllers
 {
     public class TransportController : ApiController
     {
-        public List<TransportEntity> Get()
+        public List<TransportDTO> Get()
         {
-            var business = new TransportBusinessLayer();
-            return business.ListTransports();
+            var list = new TransportBusinessLayer().ListTransports();
+            return Mapper.Map<List<TransportDTO>>(list);
         }
     }
 }

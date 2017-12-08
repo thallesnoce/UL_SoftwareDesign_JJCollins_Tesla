@@ -1,4 +1,6 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
+﻿using AutoMapper;
+using SoftwareDesign.ControllerLayer.Business;
+using SoftwareDesign.DTO;
 using SoftwareDesign.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,9 +15,10 @@ namespace SoftwareDesign.ControllerLayer.API.Controllers
     public class ManagePackageController : ApiController
     {
         [HttpGet]
-        public List<PackageEntity> ListPackages()
+        public List<PackageDTO> ListPackages()
         {
-            return new ManagePackageBusinessLayer().ListPackage();
+            var list = new ManagePackageBusinessLayer().ListPackage();
+            return Mapper.Map<List<PackageDTO>>(list);
         }
 
         [HttpGet]

@@ -1,5 +1,4 @@
-﻿using SoftwareDesign.ControllerLayer.Business;
-using SoftwareDesign.Entities;
+﻿using SoftwareDesign.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +25,7 @@ namespace SoftwareDesign.View.Controllers
             //delete these two lines later. after you finish create the steps before
             //replace the fake list with the true return.
 
-            var reports = new List<ReportEntity>();
+            var reports = new List<ReportDTO>();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:54155/api/");
@@ -37,7 +36,7 @@ namespace SoftwareDesign.View.Controllers
                 var result = responseTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<List<ReportEntity>>();
+                    var readTask = result.Content.ReadAsAsync<List<ReportDTO>>();
                     readTask.Wait();
 
                     reports = readTask.Result;

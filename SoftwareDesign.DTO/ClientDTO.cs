@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoftwareDesign.Entities
+namespace SoftwareDesign.DTO
 {
-    public class ClientEntity : UserEntity
+    public class ClientDTO : UserDTO
     {
         public int ClientId { get; set; }
         public DateTime RegistedDate { get; set; }

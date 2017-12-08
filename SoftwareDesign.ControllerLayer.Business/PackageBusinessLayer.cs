@@ -10,7 +10,10 @@ using System.Collections;
 
 namespace SoftwareDesign.ControllerLayer.Business
 {
-    public class PackageBusinessLayer  //Subject: Package is being observed by interface Observer
+    /// <summary>
+    /// Subject: Package is being observed by interface Observer
+    /// </summary>
+    public class PackageBusinessLayer
     {
         private ArrayList observers;
         private int state;
@@ -66,14 +69,12 @@ namespace SoftwareDesign.ControllerLayer.Business
 
         public List<PackageEntity> SearchPackage(int transportId, int destinationId, int hotelId, DateTime startDate, DateTime endDate)
         {
-            //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().SearchPackage(transportId, destinationId, hotelId, startDate, endDate);
         }
 
         // Monica and hang use case implementation 11/11/2017 
         public List<PackageEntity> DetailsPackage(String Name, int PackageId, String Description, int Price, DateTime startDate, DateTime endDate)
         {
-            //TODO: Use a design pattern to create an instance of Repository
             return new PackageDataAccess().DetailsPackage(Name, PackageId, Description, Price, startDate, endDate);
         }
 
